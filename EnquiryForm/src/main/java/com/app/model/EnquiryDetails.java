@@ -8,10 +8,10 @@ import lombok.Data;
 @Data
 public class EnquiryDetails {
 	@Id
-	Integer customerID;
+	int customerID;
 	String	firstName;
 	String	lastName;
-	Integer age;
+	int age;
 	String email;
 	long mobileNo;
 	String pancardNo;
