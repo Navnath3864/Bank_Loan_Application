@@ -20,5 +20,4 @@ public class EnquiryDetails {
 
 	private String pancardNo;
 
-	
 }

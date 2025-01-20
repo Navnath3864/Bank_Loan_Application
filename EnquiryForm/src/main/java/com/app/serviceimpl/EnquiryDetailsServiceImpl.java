@@ -49,7 +49,6 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	}
 	public void deleteEnquiryDetails(int customerID) {
 		enquiryDetailsRepository.deleteById(customerID);
-		
 	}
 
 }

@@ -19,6 +19,4 @@ public interface EnquiryDetailsService {
 	void deleteEnquiryDetails(int customerID);
 
 
-	
-
 }
