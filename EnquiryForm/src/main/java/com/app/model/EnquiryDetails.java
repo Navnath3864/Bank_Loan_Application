@@ -12,11 +12,9 @@ public class EnquiryDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerID;
-	private String	firstName;
-	private String	lastName;
+	private String firstName;
+	private String lastName;
 	private int age;
 	private String email;
 	private long mobileNo;
-	private String pancardNo;
-	
-}
+	private String pancardNo;}
