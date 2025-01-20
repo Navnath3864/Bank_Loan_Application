@@ -1,6 +1,8 @@
 package com.app.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
@@ -8,12 +10,14 @@ import lombok.Data;
 @Data
 public class EnquiryDetails {
 	@Id
-	Integer customerID;
-	String	firstName;
-	String	lastName;
-	Integer age;
-	String email;
-	long mobileNo;
-	String pancardNo;
-//	Cibil cibilSCore;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int customerID;
+	private String	firstName;
+	private String	lastName;
+	private int age;
+	private String email;
+	private long mobileNo;
+	private String pancardNo;
+	
+	
 }
