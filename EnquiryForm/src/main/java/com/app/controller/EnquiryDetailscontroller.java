@@ -54,4 +54,5 @@ public class EnquiryDetailscontroller {
 		enquiryDetailsService.deleteEnquiryDetails(customerID);
 	}
 
+	
 }
