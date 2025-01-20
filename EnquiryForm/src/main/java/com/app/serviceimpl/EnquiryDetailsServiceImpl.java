@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 import com.app.model.EnquiryDetails;
 import com.app.repository.EnquiryDetailsRepository;
 import com.app.service.EnquiryDetailsService;
+
 @Service
-public class EnquiryDetailsServiceImpl implements EnquiryDetailsService{
+public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
 
@@ -19,8 +20,14 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService{
 	}
 
 	@Override
+
 	public List<EnquiryDetails> getAllEquiryDetails() {
 		return enquiryDetailsRepository.findAll();
+		}
+	
+	public EnquiryDetails getSingleEnquiryDetails(int customerID) {
+
+		return enquiryDetailsRepository.findByCustomerID(customerID);
 	}
 
 }

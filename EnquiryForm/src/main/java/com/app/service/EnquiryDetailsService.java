@@ -12,6 +12,7 @@ public interface EnquiryDetailsService {
 
 	List<EnquiryDetails> getAllEquiryDetails();
 
+	EnquiryDetails getSingleEnquiryDetails(int customerID);
 
 
 }
