@@ -30,4 +30,10 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 		return enquiryDetailsRepository.findByCustomerID(customerID);
 	}
 
+	@Override
+	public void deleteEnquiryDetails(int customerID) {
+		enquiryDetailsRepository.deleteById(customerID);
+		
+	}
+
 }

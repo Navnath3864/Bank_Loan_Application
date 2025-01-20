@@ -14,5 +14,7 @@ public interface EnquiryDetailsService {
 
 	EnquiryDetails getSingleEnquiryDetails(int customerID);
 
+	void deleteEnquiryDetails(int customerID);
+
 
 }
