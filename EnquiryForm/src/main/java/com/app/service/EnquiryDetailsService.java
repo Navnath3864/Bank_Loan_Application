@@ -6,4 +6,6 @@ public interface EnquiryDetailsService {
 
 	EnquiryDetails saveDetails(EnquiryDetails enquiryDetails);
 
+	EnquiryDetails getSingleEnquiryDetails(int customerID);
+
 }
