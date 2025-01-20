@@ -9,12 +9,13 @@ import lombok.Data;
 public class EnquiryDetails {
 	@Id
 	int customerID;
-	String	firstName;
-	String	lastName;
+	String firstName;
+	String lastName;
 	int age;
 	String email;
 	long mobileNo;
 	String pancardNo;
+
 	
 //	Cibil cibilSCore;
 }
