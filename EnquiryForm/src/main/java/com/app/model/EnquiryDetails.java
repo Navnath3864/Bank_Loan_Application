@@ -15,5 +15,6 @@ public class EnquiryDetails {
 	String email;
 	long mobileNo;
 	String pancardNo;
+	
 //	Cibil cibilSCore;
 }
