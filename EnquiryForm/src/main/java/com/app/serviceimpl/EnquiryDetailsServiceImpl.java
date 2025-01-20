@@ -32,6 +32,7 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	}
 
 	@Override
+
 	public EnquiryDetails updateEnquiryDetails( EnquiryDetails enquiryDetails) {
 		Optional<EnquiryDetails> endetails=enquiryDetailsRepository.findById(enquiryDetails.getCustomerID());
 		if(endetails.isPresent()) {
@@ -45,6 +46,10 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 			return endetails.get();
 		}
 		return null;
+	}
+	public void deleteEnquiryDetails(int customerID) {
+		enquiryDetailsRepository.deleteById(customerID);
+		
 	}
 
 }

@@ -16,5 +16,8 @@ public interface EnquiryDetailsService {
 
 	EnquiryDetails updateEnquiryDetails(EnquiryDetails enquiryDetails);
 
+	void deleteEnquiryDetails(int customerID);
+
+
 
 }
