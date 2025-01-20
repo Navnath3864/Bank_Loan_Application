@@ -13,10 +13,10 @@ public interface EnquiryDetailsService {
 	List<EnquiryDetails> getAllEquiryDetails();
 
 	EnquiryDetails getSingleEnquiryDetails(int customerID);
-
-	EnquiryDetails updateEnquiryDetails(EnquiryDetails enquiryDetails);
-
 	void deleteEnquiryDetails(int customerID);
+
+	EnquiryDetails updateEnquiryDetails(EnquiryDetails enquiryDetails, int customerID);
+
 
 
 }

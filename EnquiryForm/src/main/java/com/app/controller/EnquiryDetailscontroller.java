@@ -41,9 +41,9 @@ public class EnquiryDetailscontroller {
 		return new ResponseEntity<EnquiryDetails>(enquiryDetails, HttpStatus.OK);
 	}
 	
-	@PutMapping("/api/updateenquirydetails")
-	public ResponseEntity<EnquiryDetails> updateEnquiryDetails(@RequestBody EnquiryDetails enquiryDetails) {
-		EnquiryDetails enDetails = enquiryDetailsService.updateEnquiryDetails(enquiryDetails);
+	@PutMapping("/api/updateenquirydetails/{customerID}")
+	public ResponseEntity<EnquiryDetails> updateEnquiryDetails(@RequestBody EnquiryDetails enquiryDetails,@PathVariable int customerID) {
+		EnquiryDetails enDetails = enquiryDetailsService.updateEnquiryDetails(enquiryDetails,customerID);
 		return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
 	}
 	
