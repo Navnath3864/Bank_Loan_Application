@@ -10,7 +10,6 @@ import lombok.Data;
 @Data
 public class EnquiryDetails {
 	@Id
-<<<<<<< HEAD
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerID;
 	private String	firstName;
@@ -19,17 +18,6 @@ public class EnquiryDetails {
 	private String email;
 	private long mobileNo;
 	private String pancardNo;
-	
-=======
-	int customerID;
-	String firstName;
-	String lastName;
-	int age;
-	String email;
-	long mobileNo;
-	String pancardNo;
 
 	
-//	Cibil cibilSCore;
->>>>>>> branch 'main' of https://github.com/Navnath3864/Bank_Loan_Application.git
 }
