@@ -6,14 +6,21 @@ import org.springframework.stereotype.Service;
 import com.app.model.EnquiryDetails;
 import com.app.repository.EnquiryDetailsRepository;
 import com.app.service.EnquiryDetailsService;
+
 @Service
-public class EnquiryDetailsServiceImpl implements EnquiryDetailsService{
+public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
 
 	@Override
 	public EnquiryDetails saveDetails(EnquiryDetails enquiryDetails) {
 		return enquiryDetailsRepository.save(enquiryDetails);
+	}
+
+	@Override
+	public EnquiryDetails getSingleEnquiryDetails(int customerID) {
+
+		return enquiryDetailsRepository.findByCustomerID(customerID);
 	}
 
 }
