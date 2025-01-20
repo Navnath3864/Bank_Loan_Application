@@ -19,5 +19,4 @@ public class EnquiryDetails {
 	private long mobileNo;
 	private String pancardNo;
 	
-	
 }
