@@ -17,4 +17,8 @@ public class EnquiryDetails {
 	private int age;
 	private String email;
 	private long mobileNo;
-	private String pancardNo;}
+
+	private String pancardNo;
+
+	
+}

@@ -1,5 +1,7 @@
 package com.app.serviceimpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,11 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	}
 
 	@Override
+
+	public List<EnquiryDetails> getAllEquiryDetails() {
+		return enquiryDetailsRepository.findAll();
+		}
+	
 	public EnquiryDetails getSingleEnquiryDetails(int customerID) {
 
 		return enquiryDetailsRepository.findByCustomerID(customerID);

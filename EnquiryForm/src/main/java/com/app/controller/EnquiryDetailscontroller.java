@@ -1,5 +1,7 @@
 package com.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +25,13 @@ public class EnquiryDetailscontroller {
 		EnquiryDetails enDetails = enquiryDetailsService.saveDetails(enquiryDetails);
 		return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
 	}
-
+	
+	   @GetMapping("/api/getallenquirydetails")
+	    public ResponseEntity<List<EnquiryDetails>> getAllEnquiryDetails() {
+	        List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
+	        return new ResponseEntity<>(aeDetails, HttpStatus.OK);
+	    }
+	   
 	@GetMapping("/api/enquiry/{customerID}")
 	public ResponseEntity<EnquiryDetails> getSingleEnquiryDetails(@PathVariable int customerID) {
 		EnquiryDetails enquiryDetails = enquiryDetailsService.getSingleEnquiryDetails(customerID);
