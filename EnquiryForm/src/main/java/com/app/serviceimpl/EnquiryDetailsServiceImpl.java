@@ -31,24 +31,24 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 		return enquiryDetailsRepository.findByCustomerID(customerID);
 	}
 
-	@Override
-
-	public EnquiryDetails updateEnquiryDetails( EnquiryDetails enquiryDetails) {
-		Optional<EnquiryDetails> endetails=enquiryDetailsRepository.findById(enquiryDetails.getCustomerID());
-		if(endetails.isPresent()) {
-			endetails.get().setFirstName(enquiryDetails.getFirstName());
-			endetails.get().setLastName(enquiryDetails.getLastName());
-			endetails.get().setAge(enquiryDetails.getAge());
-			endetails.get().setMobileNo(enquiryDetails.getMobileNo());
-			endetails.get().setEmail(enquiryDetails.getEmail());
-			endetails.get().setPancardNo(enquiryDetails.getPancardNo());
-			enquiryDetailsRepository.save(endetails.get());
-			return endetails.get();
-		}
-		return null;
-	}
 	public void deleteEnquiryDetails(int customerID) {
 		enquiryDetailsRepository.deleteById(customerID);
+	}
+
+	@Override
+	public EnquiryDetails updateEnquiryDetails(EnquiryDetails enquiryDetails, int customerID) {
+		EnquiryDetails enquiryDetails2 = enquiryDetailsRepository.findByCustomerID(customerID);
+		if (enquiryDetails2!=null) {
+			enquiryDetails2.setFirstName(enquiryDetails.getFirstName());
+			enquiryDetails2.setLastName(enquiryDetails.getLastName());
+			enquiryDetails2.setEmail(enquiryDetails.getEmail());
+			enquiryDetails2.setAge(enquiryDetails.getAge());
+			enquiryDetails2.setMobileNo(enquiryDetails.getMobileNo());
+			enquiryDetails2.setPancardNo(enquiryDetails.getPancardNo());
+			enquiryDetailsRepository.save(enquiryDetails2);
+			return enquiryDetails2;
+		}
+		return null;
 	}
 
 }
