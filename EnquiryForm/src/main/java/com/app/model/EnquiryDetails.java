@@ -10,7 +10,6 @@ import lombok.Data;
 @Data
 public class EnquiryDetails {
 	@Id
-
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerID;
 	private String firstName;
@@ -18,6 +17,4 @@ public class EnquiryDetails {
 	private int age;
 	private String email;
 	private long mobileNo;
-	private String pancardNo;
-
-}
+	private String pancardNo;}
