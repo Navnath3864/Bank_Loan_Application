@@ -18,6 +18,7 @@ import com.app.model.EnquiryDetails;
 import com.app.service.EnquiryDetailsService;
 
 @RestController
+
 public class EnquiryDetailscontroller {
 
 	@Autowired

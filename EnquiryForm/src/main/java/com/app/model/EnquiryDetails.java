@@ -20,4 +20,10 @@ public class EnquiryDetails {
 
 	private String pancardNo;
 
+//	"firstName":"Harshada",
+//	"lastName":"Thorat",
+//	"age":25,
+//	"email":"thoratharshada065@gmail.com",
+//	"mobileno":7028763328,
+//	"pancard":"harshada12"
 }
