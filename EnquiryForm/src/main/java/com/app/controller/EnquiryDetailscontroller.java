@@ -18,7 +18,7 @@ import com.app.model.EnquiryDetails;
 import com.app.service.EnquiryDetailsService;
 
 @RestController
-
+@RequestMapping("/app")
 public class EnquiryDetailscontroller {
 
 	@Autowired
