@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class EnquiryFormApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EnquiryFormApplication.class, args);
+		
 	}
 	@Bean
 	//@LoadBalanced
