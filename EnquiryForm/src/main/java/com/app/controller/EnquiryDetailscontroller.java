@@ -60,7 +60,7 @@ public class EnquiryDetailscontroller {
 
 	@PutMapping("/api/updatecibil/{customerID}")
 	public ResponseEntity<EnquiryDetails> getDataFromCibilScoreData(@PathVariable int customerID) {
-		String url = "http://navnath:8087/getenquirydata/" + customerID;
+		String url = "http://localhost:8087/getenquirydata/" + customerID;
 		EnquiryDetails enq = rs.getForObject(url, EnquiryDetails.class);
 		enquiryDetailsService.updateEnquiryDetails(enq, customerID);
 		return new ResponseEntity<EnquiryDetails>(enq, HttpStatus.ACCEPTED);
