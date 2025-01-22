@@ -1,7 +1,6 @@
 package com.app.serviceimpl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +13,12 @@ import com.app.service.EnquiryDetailsService;
 public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
+	
+	
 
 	@Override
 	public EnquiryDetails saveDetails(EnquiryDetails enquiryDetails) {
+		
 		return enquiryDetailsRepository.save(enquiryDetails);
 	}
 
@@ -45,10 +47,14 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 			enquiryDetails2.setAge(enquiryDetails.getAge());
 			enquiryDetails2.setMobileNo(enquiryDetails.getMobileNo());
 			enquiryDetails2.setPancardNo(enquiryDetails.getPancardNo());
+			enquiryDetails2.setCibilScoreData(enquiryDetails.getCibilScoreData());
 			enquiryDetailsRepository.save(enquiryDetails2);
 			return enquiryDetails2;
 		}
 		return null;
 	}
+	
+	
+	
 
 }
