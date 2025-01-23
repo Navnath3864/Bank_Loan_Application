@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.exception.InValidAgeException;
 import com.app.exception.InValidEmailException;
+import com.app.exception.InValidFirstNameOrLastNameException;
 import com.app.exception.InValidMobileNoException;
 import com.app.exception.InValidPancardNoException;
 import com.app.model.EnquiryDetails;
@@ -22,12 +23,10 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 
 	@Override
 	public EnquiryDetails saveDetails(EnquiryDetails enquiryDetails) {
-		validateEnquiryDetails(enquiryDetails);
-		return enquiryDetailsRepository.save(enquiryDetails);
-	}
-
-	public void validateEnquiryDetails(EnquiryDetails enquiryDetails)
-	{
+		if(!enquiryDetails.equals(enquiryDetails.getFirstName().toLowerCase()) && !enquiryDetails.equals(enquiryDetails.getLastName().toLowerCase()))
+		{
+			throw new InValidFirstNameOrLastNameException("first name or last name must be in lowercase");
+		}
 		String mobileno=String.valueOf(enquiryDetails.getMobileNo());
 		if(mobileno.length()!=10)
 		{
@@ -78,7 +77,10 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 			throw new InValidAgeException("age is invalid");
 		}
 		
+		
+		return enquiryDetailsRepository.save(enquiryDetails);
 	}
+
 	
 	@Override
     public List<EnquiryDetails> getAllEquiryDetails() {
