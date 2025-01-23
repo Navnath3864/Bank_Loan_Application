@@ -75,11 +75,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.app</groupId>
-			<artifactId>CibilScoreDetails</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -96,6 +92,7 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+			
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -110,7 +107,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
