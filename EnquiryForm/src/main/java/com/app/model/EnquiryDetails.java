@@ -32,6 +32,8 @@ public class EnquiryDetails {
 //	"lastName":"Thorat",
 //	"age":25,
 //	"email":"thoratharshada065@gmail.com",
-//	"mobileno":7028763328,
-//	"pancard":"harshada12"
+//	"mobileNo":7028763328,
+//	"pancardNo":"harshada12"
+//  "CibilScoreData":{
+ //}
 }

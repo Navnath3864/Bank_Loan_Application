@@ -52,11 +52,12 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<!--<dependency>
+		<dependency>
 			<groupId>com.app</groupId>
 			<artifactId>CibilScoreDetails</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		--><dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -75,11 +76,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.app</groupId>
-			<artifactId>CibilScoreDetails</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+	
 	</dependencies>
 
 	<build>
