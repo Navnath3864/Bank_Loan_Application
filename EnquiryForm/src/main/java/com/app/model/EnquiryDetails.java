@@ -42,6 +42,7 @@ public class EnquiryDetails {
 	private long mobileNo;
 	
 	@NotBlank(message = "PancardNo is required")
+	@Pattern(regexp = "^[A-Z]{5}[0-9]{4}[A-Z]{1}$", message = "Invalid PAN card number. Format: AAAAA1234A")
 	private String enquiryStatus ="pending";
 
 	private String pancardNo;
