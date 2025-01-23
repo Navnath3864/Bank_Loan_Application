@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,12 +17,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.app.model.EnquiryDetails;
 import com.app.service.EnquiryDetailsService;
-import com.app.exception.InValidAgeException;
-import com.app.exception.InValidEmailException;
-import com.app.exception.InValidFirstNameException;
-import com.app.exception.InValidLastNameException;
-import com.app.exception.InValidMobileNoException;
-import com.app.exception.InValidPancardNoException;
+
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/app")
 public class EnquiryDetailscontroller {
@@ -35,53 +31,11 @@ public class EnquiryDetailscontroller {
 	EnquiryDetailsService enquiryDetailsService;
 
 	@PostMapping("/api/enquiry")
-	public ResponseEntity<EnquiryDetails> saveDetails(@RequestBody EnquiryDetails enquiryDetails) {
+	public ResponseEntity<EnquiryDetails> saveDetails(@Valid @RequestBody EnquiryDetails enquiryDetails) {
 		EnquiryDetails enDetails = enquiryDetailsService.saveDetails(enquiryDetails);
 		return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
 	}
-	
-	@ExceptionHandler(InValidEmailException.class)
-	public ResponseEntity<String> handleValidationException(InValidEmailException ex)
-	{
-		String message = ex.getMessage();
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
-    }
-	
-	@ExceptionHandler(InValidMobileNoException.class)
-	public ResponseEntity<String> handleValidationException(InValidMobileNoException ex)
-	{
-		String message = ex.getMessage();
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
-    }
-	
-	@ExceptionHandler(InValidPancardNoException.class)
-	public ResponseEntity<String> handleValidationException(InValidPancardNoException ex)
-	{
-		String message = ex.getMessage();
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
-    }
-	
-	@ExceptionHandler(InValidAgeException.class)
-	public ResponseEntity<String> handleValidationException(InValidAgeException ex)
-	{
-		String message = ex.getMessage();
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
-    }
-	
-	@ExceptionHandler(InValidFirstNameException.class)
-	public ResponseEntity<String> handleValidationException(InValidFirstNameException ex)
-	{
-		String message = ex.getMessage();
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
-    }
-	
-	@ExceptionHandler(InValidLastNameException.class)
-	public ResponseEntity<String> handleValidationException(InValidLastNameException ex)
-	{
-		String message = ex.getMessage();
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
-    }
-	
+		
 	@GetMapping("/api/getallenquirydetails") 
 	public ResponseEntity<List<EnquiryDetails>> getAllEnquiryDetails() {
 		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
@@ -110,6 +64,7 @@ public class EnquiryDetailscontroller {
 	public ResponseEntity<EnquiryDetails> getDataFromCibilScoreData(@PathVariable int customerID) {
 		String url = "http://localhost:8087/oe/getenquirydata/" + customerID;
 		EnquiryDetails enq = rs.getForObject(url, EnquiryDetails.class);
+		System.out.println(enq);
 		enquiryDetailsService.updateEnquiryDetails(enq, customerID);
 		return new ResponseEntity<EnquiryDetails>(enq, HttpStatus.ACCEPTED);
 	}

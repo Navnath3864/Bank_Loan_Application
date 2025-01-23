@@ -5,30 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.exception.InValidAgeException;
-import com.app.exception.InValidEmailException;
-import com.app.exception.InValidFirstNameException;
-
-import com.app.exception.InValidLastNameException;
-import com.app.exception.InValidMobileNoException;
-import com.app.exception.InValidPancardNoException;
 import com.app.model.EnquiryDetails;
 import com.app.repository.EnquiryDetailsRepository;
 import com.app.service.EnquiryDetailsService;
-import com.app.validation.Validator;
 
 @Service
 public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
 	
-	@Autowired
-	Validator validation;
 
 	@Override
 	public EnquiryDetails saveDetails(EnquiryDetails enquiryDetails) {
-		
-		validation.validateEnquiryDetails(enquiryDetails);
 		return enquiryDetailsRepository.save(enquiryDetails);
 	}
 
