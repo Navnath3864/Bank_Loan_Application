@@ -35,8 +35,8 @@ public class EnquiryDetailscontroller {
 		EnquiryDetails enDetails = enquiryDetailsService.saveDetails(enquiryDetails);
 		return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
 	}
-
-	@GetMapping("/api/getallenquirydetails")
+		
+	@GetMapping("/api/getallenquirydetails") 
 	public ResponseEntity<List<EnquiryDetails>> getAllEnquiryDetails() {
 		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
 		return new ResponseEntity<>(aeDetails, HttpStatus.OK);
