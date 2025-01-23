@@ -25,7 +25,7 @@ public class EnquiryDetails {
 	@NotBlank(message = "First Name is required")
 	@Pattern(regexp = "^[A-Z][a-zA-Z]*$", message = "Name must start with a capital letter and contain only alphabets")
 	private String firstName;
-	
+	 
 	@NotBlank(message = "Last Name is required")
 	@Pattern(regexp = "^[A-Z][a-zA-Z]*$", message = "Name must start with a capital letter and contain only alphabets")
 	private String lastName;
