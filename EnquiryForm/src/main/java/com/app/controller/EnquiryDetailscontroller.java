@@ -20,6 +20,8 @@ import com.app.model.EnquiryDetails;
 import com.app.service.EnquiryDetailsService;
 import com.app.exception.InValidAgeException;
 import com.app.exception.InValidEmailException;
+import com.app.exception.InValidFirstNameException;
+import com.app.exception.InValidLastNameException;
 import com.app.exception.InValidMobileNoException;
 import com.app.exception.InValidPancardNoException;
 @RestController
@@ -42,7 +44,7 @@ public class EnquiryDetailscontroller {
 	public ResponseEntity<String> handleValidationException(InValidEmailException ex)
 	{
 		String message = ex.getMessage();
-    return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
     }
 	
 	@ExceptionHandler(InValidMobileNoException.class)
@@ -61,6 +63,20 @@ public class EnquiryDetailscontroller {
 	
 	@ExceptionHandler(InValidAgeException.class)
 	public ResponseEntity<String> handleValidationException(InValidAgeException ex)
+	{
+		String message = ex.getMessage();
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
+    }
+	
+	@ExceptionHandler(InValidFirstNameException.class)
+	public ResponseEntity<String> handleValidationException(InValidFirstNameException ex)
+	{
+		String message = ex.getMessage();
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
+    }
+	
+	@ExceptionHandler(InValidLastNameException.class)
+	public ResponseEntity<String> handleValidationException(InValidLastNameException ex)
 	{
 		String message = ex.getMessage();
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);

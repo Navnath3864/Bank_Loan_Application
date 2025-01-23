@@ -7,77 +7,28 @@ import org.springframework.stereotype.Service;
 
 import com.app.exception.InValidAgeException;
 import com.app.exception.InValidEmailException;
-import com.app.exception.InValidFirstNameOrLastNameException;
+import com.app.exception.InValidFirstNameException;
+
+import com.app.exception.InValidLastNameException;
 import com.app.exception.InValidMobileNoException;
 import com.app.exception.InValidPancardNoException;
 import com.app.model.EnquiryDetails;
 import com.app.repository.EnquiryDetailsRepository;
 import com.app.service.EnquiryDetailsService;
+import com.app.validation.Validator;
 
 @Service
 public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
 	
-	
+	@Autowired
+	Validator validation;
 
 	@Override
 	public EnquiryDetails saveDetails(EnquiryDetails enquiryDetails) {
-		if(!enquiryDetails.equals(enquiryDetails.getFirstName().toLowerCase()) && !enquiryDetails.equals(enquiryDetails.getLastName().toLowerCase()))
-		{
-			throw new InValidFirstNameOrLastNameException("first name or last name must be in lowercase");
-		}
-		String mobileno=String.valueOf(enquiryDetails.getMobileNo());
-		if(mobileno.length()!=10)
-		{
-			throw new InValidMobileNoException ("mobile length is invalid ");
-		}
 		
-		if(!enquiryDetails.getEmail().endsWith("@gmail.com"))
-		{
-			throw new InValidEmailException("email is invalid");
-		}
-		
-		String pancardNo=enquiryDetails.getPancardNo();
-		if (pancardNo == null || pancardNo.length() != 10) 
-		{
-            throw new InValidPancardNoException("PANCard number must have exactly 10 characters");
-        }
-
-        
-        for (int i = 0; i < 5; i++) 
-        {
-            char ch = pancardNo.charAt(i);
-            if (ch < 'A' || ch > 'Z') 
-            {
-                throw new InValidPancardNoException("The first 5 characters of the PANCard must be uppercase letters.");
-            }
-        }
-
-       
-        for (int i = 5; i < 9; i++) 
-        {
-            char ch = pancardNo.charAt(i);
-            if (ch < '0' || ch > '9') {
-                throw new InValidPancardNoException("The next 4 characters of the PANCard must be digits.");
-            }
-        }
-
-        
-        char lastChar = pancardNo.charAt(9);
-        if (lastChar < 'A' || lastChar > 'Z') {
-            throw new InValidPancardNoException("The last character of the PAN must be an uppercase letter.");
-        }
-
-        
-        System.out.println("PAN card is valid!");
-        
-        if(!(enquiryDetails.getAge()>=18))
-		{
-			throw new InValidAgeException("age is invalid");
-		}
-		
-		
+		validation.validateEnquiryDetails(enquiryDetails);
 		return enquiryDetailsRepository.save(enquiryDetails);
 	}
 
