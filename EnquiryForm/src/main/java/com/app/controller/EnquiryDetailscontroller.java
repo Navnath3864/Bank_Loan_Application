@@ -66,4 +66,5 @@ public class EnquiryDetailscontroller {
 		return new ResponseEntity<EnquiryDetails>(enq, HttpStatus.ACCEPTED);
 	}
 
+
 }
