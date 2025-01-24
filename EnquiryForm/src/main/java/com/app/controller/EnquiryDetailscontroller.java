@@ -85,7 +85,7 @@ public class EnquiryDetailscontroller {
 	}
 	
 
-	@GetMapping("/api/getpendingenquiry") 
+	@PostMapping("/api/getpendingenquiry") 
 	public ResponseEntity<List<EnquiryDetails>> getAllPendingEnquiry() {
 		List<EnquiryDetails> pendingEquiryList = new ArrayList<EnquiryDetails>();
 		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
@@ -94,6 +94,8 @@ public class EnquiryDetailscontroller {
 				pendingEquiryList.add(enq);
 			}
 		}
+		String url = "http://localhost:8087/oe/getpendingstatus";
+		rs.postForObject(url, pendingEquiryList, List.class);
 		return new ResponseEntity<>(pendingEquiryList, HttpStatus.OK);
 	}
 	
@@ -121,5 +123,4 @@ public class EnquiryDetailscontroller {
 		return new ResponseEntity<List<EnquiryDetails>>(approvedCibilList,HttpStatus.OK);
 	}
 	
-
 }
