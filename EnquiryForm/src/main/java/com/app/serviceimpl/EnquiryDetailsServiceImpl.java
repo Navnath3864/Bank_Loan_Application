@@ -19,9 +19,9 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
 	
-	
 
 	@Override
+<<<<<<< HEAD
 	public EnquiryDetails saveDetails(EnquiryDetails enquiryDetails)  {
 		if(!enquiryDetails.equals(enquiryDetails.getFirstName().toLowerCase()) && !enquiryDetails.equals(enquiryDetails.getLastName().toLowerCase()))
 				{
@@ -81,13 +81,17 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
        }
 
         return enquiryDetailsRepository.save(enquiryDetails);
+=======
+	public EnquiryDetails saveDetails(EnquiryDetails enquiryDetails) {
+		return enquiryDetailsRepository.save(enquiryDetails);
+>>>>>>> branch 'main' of https://github.com/Navnath3864/Bank_Loan_Application.git
 	}
 
+	
 	@Override
-
-	public List<EnquiryDetails> getAllEquiryDetails() {
+    public List<EnquiryDetails> getAllEquiryDetails() {
 		return enquiryDetailsRepository.findAll();
-		}
+	}
 	
 	public EnquiryDetails getSingleEnquiryDetails(int customerID) {
 
