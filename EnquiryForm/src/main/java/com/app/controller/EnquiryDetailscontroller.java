@@ -37,9 +37,9 @@ public class EnquiryDetailscontroller {
 
 	@PostMapping("/api/enquiry")
 	public ResponseEntity<EnquiryDetails> saveDetails(@Valid @RequestBody EnquiryDetails enquiryDetails) {
-		LOGGER.info("Received POST request to create Customer: {}", enquiryDetails);
+//		LOGGER.info("Received POST request to create Customer: {}", enquiryDetails);
 		EnquiryDetails enDetails = enquiryDetailsService.saveDetails(enquiryDetails);
-		LOGGER.debug("Customer created successfully: {}", enquiryDetails);
+//		LOGGER.debug("Customer created successfully: {}", enquiryDetails);
 		return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
 	}
 		
@@ -51,9 +51,9 @@ public class EnquiryDetailscontroller {
 
 	@GetMapping("/api/enquiry/{customerID}")
 	public ResponseEntity<EnquiryDetails> getSingleEnquiryDetails(@PathVariable int customerID) {
-		LOGGER.info("Received GET request for customer with ID: {}", customerID);
+//		LOGGER.info("Received GET request for customer with ID: {}", customerID);
 		EnquiryDetails enquiryDetails = enquiryDetailsService.getSingleEnquiryDetails(customerID);
-		LOGGER.debug("Returning Customer: {}", enquiryDetails);
+//		LOGGER.debug("Returning Customer: {}", enquiryDetails);
 		return new ResponseEntity<EnquiryDetails>(enquiryDetails, HttpStatus.OK);
 	}
 
@@ -66,19 +66,19 @@ public class EnquiryDetailscontroller {
 
 	@DeleteMapping("/api/enquiry/{customerId}")
 	public void deleteEnquiryDetails(@PathVariable int customerID) {
-		LOGGER.warn("Received DELETE request for Customer with ID: {}", customerID);
+//		LOGGER.warn("Received DELETE request for Customer with ID: {}", customerID);
 		enquiryDetailsService.deleteEnquiryDetails(customerID);
-		LOGGER.info("Customer deleted successfully: {}", customerID);
+//		LOGGER.info("Customer deleted successfully: {}", customerID);
 	}
 
 	@PutMapping("/api/updatecibil/{customerID}")
 	public ResponseEntity<EnquiryDetails> getDataFromCibilScoreData(@PathVariable int customerID) {
-		LOGGER.info("Received PUT request for Customer with ID: {}",+customerID);
+//		LOGGER.info("Received PUT request for Customer with ID: {}",+customerID);
 		String url = "http://localhost:8087/oe/getenquirydata/" + customerID;
 		EnquiryDetails enq = rs.getForObject(url, EnquiryDetails.class);
 		System.out.println(enq);
 		enquiryDetailsService.updateEnquiryDetails(enq, customerID);
-		LOGGER.debug("Customer updated successfully: {}", enq);
+//		LOGGER.debug("Customer updated successfully: {}", enq);
 		return new ResponseEntity<EnquiryDetails>(enq, HttpStatus.ACCEPTED);
 	}
 
