@@ -14,19 +14,17 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
 	
-	
 
 	@Override
 	public EnquiryDetails saveDetails(EnquiryDetails enquiryDetails) {
-		
 		return enquiryDetailsRepository.save(enquiryDetails);
 	}
 
+	
 	@Override
-
-	public List<EnquiryDetails> getAllEquiryDetails() {
+    public List<EnquiryDetails> getAllEquiryDetails() {
 		return enquiryDetailsRepository.findAll();
-		}
+	}
 	
 	public EnquiryDetails getSingleEnquiryDetails(int customerID) {
 

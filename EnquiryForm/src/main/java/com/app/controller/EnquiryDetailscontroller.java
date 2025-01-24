@@ -18,6 +18,8 @@ import org.springframework.web.client.RestTemplate;
 import com.app.model.EnquiryDetails;
 import com.app.service.EnquiryDetailsService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/app")
 public class EnquiryDetailscontroller {
@@ -29,11 +31,11 @@ public class EnquiryDetailscontroller {
 	EnquiryDetailsService enquiryDetailsService;
 
 	@PostMapping("/api/enquiry")
-	public ResponseEntity<EnquiryDetails> saveDetails(@RequestBody EnquiryDetails enquiryDetails) {
+	public ResponseEntity<EnquiryDetails> saveDetails(@Valid @RequestBody EnquiryDetails enquiryDetails) {
 		EnquiryDetails enDetails = enquiryDetailsService.saveDetails(enquiryDetails);
 		return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
 	}
-
+		
 	@GetMapping("/api/getallenquirydetails") 
 	public ResponseEntity<List<EnquiryDetails>> getAllEnquiryDetails() {
 		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
@@ -62,6 +64,7 @@ public class EnquiryDetailscontroller {
 	public ResponseEntity<EnquiryDetails> getDataFromCibilScoreData(@PathVariable int customerID) {
 		String url = "http://localhost:8087/oe/getenquirydata/" + customerID;
 		EnquiryDetails enq = rs.getForObject(url, EnquiryDetails.class);
+		System.out.println(enq);
 		enquiryDetailsService.updateEnquiryDetails(enq, customerID);
 		return new ResponseEntity<EnquiryDetails>(enq, HttpStatus.ACCEPTED);
 	}

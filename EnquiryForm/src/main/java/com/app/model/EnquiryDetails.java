@@ -2,12 +2,17 @@ package com.app.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Entity
@@ -16,12 +21,30 @@ public class EnquiryDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerID;
+	
+	@NotBlank(message = "First Name is required")
+	@Pattern(regexp = "^[A-Z][a-zA-Z]*$", message = "Name must start with a capital letter and contain only alphabets")
 	private String firstName;
+	 
+	@NotBlank(message = "Last Name is required")
+	@Pattern(regexp = "^[A-Z][a-zA-Z]*$", message = "Name must start with a capital letter and contain only alphabets")
 	private String lastName;
+	
+	@Min(value = 18, message = "Rquired Age at Least 18 Years")
+	@NotNull(message = "Age is required to fill")
 	private int age;
+	
+	@Email(message = "Invalid Email Id")
 	private String email;
+	
+	@Min(value = 1000000000, message = "Mobile number must be at least 10 digits")
+	@Max(value = 9999999999L, message = "Mobile number must be at most 10 digits")
 	private long mobileNo;
+	
+	@NotBlank(message = "PancardNo is required")
+	@Pattern(regexp = "^[A-Z]{5}[0-9]{4}[A-Z]{1}$", message = "Invalid PAN card number. Format: AAAAA1234A")
 	private String enquiryStatus ="pending";
+
 	private String pancardNo;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -32,6 +55,7 @@ public class EnquiryDetails {
 //	"lastName":"Thorat",
 //	"age":25,
 //	"email":"thoratharshada065@gmail.com",
-//	"mobileno":7028763328,
-//	"pancard":"harshada12"
+//	"mobileNo":7028763328,
+//	"pancardNo":"harshada12",
+//  "cibilScoreData":{}
 }
