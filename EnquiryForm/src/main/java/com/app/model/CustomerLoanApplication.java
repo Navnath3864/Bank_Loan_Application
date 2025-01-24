@@ -45,4 +45,6 @@ public class CustomerLoanApplication {
 	@OneToOne(cascade = CascadeType.ALL)
 	private GuarantorDetails gurantordetails;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	private LoanDisbursement loandisbursement;
 }
