@@ -16,6 +16,8 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	
 
 	@Override
+
+
 	public EnquiryDetails saveDetails(EnquiryDetails enquiryDetails) {
 		return enquiryDetailsRepository.save(enquiryDetails);
 	}
