@@ -44,11 +44,13 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 			enquiryDetails2.setFirstName(enquiryDetails.getFirstName());
 			enquiryDetails2.setLastName(enquiryDetails.getLastName());
 			enquiryDetails2.setEmail(enquiryDetails.getEmail());
+			enquiryDetails2.setEnquiryStatus("cibilgenerated");
 			enquiryDetails2.setAge(enquiryDetails.getAge());
 			enquiryDetails2.setMobileNo(enquiryDetails.getMobileNo());
 			enquiryDetails2.setPancardNo(enquiryDetails.getPancardNo());
 			enquiryDetails2.setCibilScoreData(enquiryDetails.getCibilScoreData());
 			enquiryDetailsRepository.save(enquiryDetails2);
+			System.out.println(enquiryDetails2);
 			return enquiryDetails2;
 		}
 		return null;

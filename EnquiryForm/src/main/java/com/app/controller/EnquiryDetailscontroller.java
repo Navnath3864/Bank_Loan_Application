@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -75,15 +76,50 @@ public class EnquiryDetailscontroller {
 
 	@PutMapping("/api/updatecibil/{customerID}")
 	public ResponseEntity<EnquiryDetails> getDataFromCibilScoreData(@PathVariable int customerID) {
-		LOGGER.info("Received PUT request for Customer with ID: {}",+customerID);
-		String url = "http://localhost:8087/oe/getenquirydata/" + customerID;
+		LOGGER.info("Received PUT request for Customer with customerId: {}",customerID);
+		String url = "http://localhost:8087/oe/getenquirydata/"+customerID;
 		EnquiryDetails enq = rs.getForObject(url, EnquiryDetails.class);
-		System.out.println(enq);
-		enquiryDetailsService.updateEnquiryDetails(enq, customerID);
-		LOGGER.debug("Customer updated successfully: {}", enq);
-		return new ResponseEntity<EnquiryDetails>(enq, HttpStatus.ACCEPTED);
+		EnquiryDetails eqEnquiryDetails=enquiryDetailsService.updateEnquiryDetails(enq, customerID);
+		LOGGER.debug("Customer updated successfully: {}", eqEnquiryDetails);
+		return new ResponseEntity<EnquiryDetails>(eqEnquiryDetails, HttpStatus.ACCEPTED);
 	}
 	
+
+	@GetMapping("/api/getpendingenquiry") 
+	public ResponseEntity<List<EnquiryDetails>> getAllPendingEnquiry() {
+		List<EnquiryDetails> pendingEquiryList = new ArrayList<EnquiryDetails>();
+		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
+		for(EnquiryDetails enq : aeDetails) {
+			if(enq.getEnquiryStatus().equals("cibilpending")) {
+				pendingEquiryList.add(enq);
+			}
+		}
+		return new ResponseEntity<>(pendingEquiryList, HttpStatus.OK);
+	}
+	
+	@GetMapping("/api/showrejectedenquiry")
+	public ResponseEntity<List<EnquiryDetails>> getRejectedEnquiry(){
+		List<EnquiryDetails> rejectedEnquiryList= new ArrayList<EnquiryDetails>();
+		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
+		for(EnquiryDetails enq : aeDetails) {
+			if(enq.getCibilScoreData()!=null && enq.getCibilScoreData().getCibilScore()<500) {
+				rejectedEnquiryList.add(enq);
+			}
+		}
+		return new ResponseEntity<List<EnquiryDetails>>(rejectedEnquiryList,HttpStatus.OK);
+	}
+	
+	@GetMapping("/api/cibilapproved")
+	public ResponseEntity<List<EnquiryDetails>> getCibilApproved(){
+		List<EnquiryDetails> approvedCibilList= new ArrayList<EnquiryDetails>();
+		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
+		for(EnquiryDetails enq : aeDetails) {
+			if(enq.getCibilScoreData()!=null && enq.getCibilScoreData().getCibilScore()>=500) {
+				approvedCibilList.add(enq);
+			}
+		}
+		return new ResponseEntity<List<EnquiryDetails>>(approvedCibilList,HttpStatus.OK);
+	}
 	
 
 }
