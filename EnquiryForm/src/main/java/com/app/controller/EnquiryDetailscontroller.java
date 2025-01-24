@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.app.exception.InValidAgeException;
+import com.app.exception.InValidEmailException;
+import com.app.exception.InValidFirstNameOrLastNameException;
+import com.app.exception.InValidMobileNoException;
+import com.app.exception.InValidPancardNoException;
 import com.app.model.EnquiryDetails;
 import com.app.service.EnquiryDetailsService;
 
@@ -65,5 +71,35 @@ public class EnquiryDetailscontroller {
 		enquiryDetailsService.updateEnquiryDetails(enq, customerID);
 		return new ResponseEntity<EnquiryDetails>(enq, HttpStatus.ACCEPTED);
 	}
+	@ExceptionHandler(InValidEmailException.class)
+	  public ResponseEntity<String> handleValidationException(InValidEmailException ex)
+	{
+		String message = ex.getMessage();
+      return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
+  }
+	@ExceptionHandler(InValidMobileNoException.class)
+	  public ResponseEntity<String> handleValidationException(InValidMobileNoException ex)
+	{
+		String message = ex.getMessage();
+    return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
+}
+	@ExceptionHandler(InValidPancardNoException.class)
+	  public ResponseEntity<String> handleValidationException(InValidPancardNoException ex)
+	{
+		String message = ex.getMessage();
+  return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
+}
+	@ExceptionHandler(InValidAgeException.class)
+	  public ResponseEntity<String> handleValidationException(InValidAgeException ex)
+	{
+		String message = ex.getMessage();
+return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
+}
+	@ExceptionHandler(InValidFirstNameOrLastNameException.class)
+	  public ResponseEntity<String> handleValidationException(InValidFirstNameOrLastNameException ex)
+	{
+		String message = ex.getMessage();
+return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
+}
 
 }
