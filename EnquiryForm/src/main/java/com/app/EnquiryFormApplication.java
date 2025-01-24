@@ -16,9 +16,9 @@ public class EnquiryFormApplication {
 	
 	@Bean
 	//@LoadBalanced
-	public RestTemplate rt() {
+	public RestTemplate rt() 
+	{
 		return new RestTemplate();
-		
-		
+			
 	}
 }
