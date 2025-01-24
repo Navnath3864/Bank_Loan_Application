@@ -17,5 +17,7 @@ public class EnquiryFormApplication {
 	//@LoadBalanced
 	public RestTemplate rt() {
 		return new RestTemplate();
+		
+		
 	}
 }

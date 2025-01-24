@@ -8,7 +8,7 @@ import com.app.model.EnquiryDetails;
 
 public interface EnquiryDetailsService {
 
-	EnquiryDetails saveDetails(EnquiryDetails enquiryDetails);
+	EnquiryDetails saveDetails(EnquiryDetails enquiryDetails) ;
 
 	List<EnquiryDetails> getAllEquiryDetails();
 
