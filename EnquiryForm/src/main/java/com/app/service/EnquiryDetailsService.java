@@ -17,8 +17,4 @@ public interface EnquiryDetailsService {
 
 	EnquiryDetails updateEnquiryDetails(EnquiryDetails enquiryDetails, int customerID);
 
-	
-
-
-
 }
