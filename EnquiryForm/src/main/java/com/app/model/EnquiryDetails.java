@@ -41,10 +41,10 @@ public class EnquiryDetails {
 	@Max(value = 9999999999L, message = "Mobile number must be at most 10 digits")
 	private long mobileNo;
 	
+	private String enquiryStatus ="pending";
+	
 	@NotBlank(message = "PancardNo is required")
 	@Pattern(regexp = "^[A-Z]{5}[0-9]{4}[A-Z]{1}$", message = "Invalid PAN card number. Format: AAAAA1234A")
-	private String enquiryStatus ="pending";
-
 	private String pancardNo;
 	
 	@OneToOne(cascade = CascadeType.ALL)
