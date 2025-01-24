@@ -56,12 +56,11 @@ public class EnquiryDetails {
 //	"age":25,
 //	"email":"thoratharshada065@gmail.com",
 //	"mobileNo":7028763328,
-<<<<<<< HEAD
 //	"pancardNo":"harshada12"
+//	"enquiryStatus":"pending",
 //  "CibilScoreData":{
  //}
-=======
+
 //	"pancardNo":"harshada12",
 //  "cibilScoreData":{}
->>>>>>> branch 'main' of https://github.com/Navnath3864/Bank_Loan_Application.git
 }

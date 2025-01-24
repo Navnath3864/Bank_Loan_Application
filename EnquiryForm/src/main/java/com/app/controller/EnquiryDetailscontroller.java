@@ -19,11 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.app.exception.InValidAgeException;
-import com.app.exception.InValidEmailException;
-import com.app.exception.InValidFirstNameOrLastNameException;
-import com.app.exception.InValidMobileNoException;
-import com.app.exception.InValidPancardNoException;
+
 import com.app.model.EnquiryDetails;
 import com.app.service.EnquiryDetailsService;
 

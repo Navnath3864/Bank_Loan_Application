@@ -4,7 +4,6 @@ package com.app.service;
 
 import java.util.List;
 
-import com.app.exception.InValidMobileNoException;
 import com.app.model.EnquiryDetails;
 
 public interface EnquiryDetailsService {
