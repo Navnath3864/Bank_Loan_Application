@@ -4,6 +4,6 @@ import com.app.model.CustomerLoanApplication;
 
 public interface CustomerLoanApplicationService {
 
-	public CustomerLoanApplication saveDetails(CustomerLoanApplication customerLoanApplication);
+	public CustomerLoanApplication saveDetails(CustomerLoanApplication customerLoanApplication, int id);
 
 }
