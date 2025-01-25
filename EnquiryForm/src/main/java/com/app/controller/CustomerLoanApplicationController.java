@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +19,10 @@ public class CustomerLoanApplicationController {
 
 	@Autowired
 	CustomerLoanApplicationService customerLoanApplicationService; 
-	@PostMapping("/api/customerloanapplication")
-	public ResponseEntity<CustomerLoanApplication> saveDetails(@RequestBody CustomerLoanApplication customerLoanApplication)
+	@PostMapping("/api/customerloanapplication/{id}")
+	public ResponseEntity<CustomerLoanApplication> saveDetails(@RequestBody CustomerLoanApplication customerLoanApplication,@PathVariable int id)
 	{
-		CustomerLoanApplication details=customerLoanApplicationService.saveDetails(customerLoanApplication);
+		CustomerLoanApplication details=customerLoanApplicationService.saveDetails(customerLoanApplication,id);
 		return new ResponseEntity<CustomerLoanApplication>(details, HttpStatus.CREATED);
 	}
 }
