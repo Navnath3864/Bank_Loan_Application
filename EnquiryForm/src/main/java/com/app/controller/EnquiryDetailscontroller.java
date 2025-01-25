@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-
+import com.app.model.CustomerLoanApplication;
 import com.app.model.EnquiryDetails;
 import com.app.service.EnquiryDetailsService;
 
@@ -96,8 +96,6 @@ public class EnquiryDetailscontroller {
 		for(EnquiryDetails enq : aeDetails) {
 			if(enq.getCibilScoreData()!=null && enq.getCibilScoreData().getCibilScore()<500) {
 				rejectedEnquiryList.add(enq);
-				String url = "http://localhost:8087/oe/sentMailToCustomer"+enq;
-				rs.postForObject(url, enq, EnquiryDetails.class);
 			}
 		}
 		return new ResponseEntity<List<EnquiryDetails>>(rejectedEnquiryList,HttpStatus.OK);
@@ -110,11 +108,15 @@ public class EnquiryDetailscontroller {
 		for(EnquiryDetails enq : aeDetails) {
 			if(enq.getCibilScoreData()!=null && enq.getCibilScoreData().getCibilScore()>=500) {
 				approvedCibilList.add(enq);
-				String url = "http://localhost:8087/oe/sentMailToCustomer"+enq;
-				rs.postForObject(url, enq, EnquiryDetails.class);
 			}
 		}
 		return new ResponseEntity<List<EnquiryDetails>>(approvedCibilList,HttpStatus.OK);
 	}
 	
+	@PutMapping("/api/saveCustomerLoanApplicationForm")
+	public ResponseEntity<CustomerLoanApplication> customerLoanApplicationForm(@RequestBody CustomerLoanApplication customerLoanApplication)
+	{
+			 CustomerLoanApplication customerLoanApplication2 = enquiryDetailsService.saveCustomerLoanApplicationForm(customerLoanApplication);
+		return new ResponseEntity<CustomerLoanApplication>(customerLoanApplication2,HttpStatus.ACCEPTED);
+	}
 }

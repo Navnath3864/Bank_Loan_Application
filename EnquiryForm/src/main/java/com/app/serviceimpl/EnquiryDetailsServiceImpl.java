@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.model.CustomerLoanApplication;
 import com.app.model.EnquiryDetails;
 import com.app.repository.EnquiryDetailsRepository;
 import com.app.service.EnquiryDetailsService;
@@ -55,6 +56,23 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 			return enquiryDetails2;
 		}
 		return null;
+	}
+
+
+	
+
+
+	@Override
+	public CustomerLoanApplication saveCustomerLoanApplicationForm(CustomerLoanApplication customerLoanApplication) {
+		int customer_id = customerLoanApplication.getCustomerId();
+		EnquiryDetails details = enquiryDetailsRepository.findByCustomerID(customer_id);
+		customerLoanApplication.setCustomerName(details.getFirstName()+details.getLastName());
+		customerLoanApplication.setCustomerAge(details.getAge());
+		customerLoanApplication.setCustomerEmail(details.getEmail());
+		customerLoanApplication.setCustomerMobileNumber(details.getMobileNo());
+		customerLoanApplication.setCibilScoreData(details.getCibilScoreData());
+		
+		return customerLoanApplication;
 	}
 	
 	
