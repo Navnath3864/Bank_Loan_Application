@@ -67,7 +67,7 @@ public class EnquiryDetailscontroller {
 		return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
 	}
 
-	@DeleteMapping("/api/enquiry/{customerId}")
+	@DeleteMapping("/api/enquiry/{customerID}")
 	public void deleteEnquiryDetails(@PathVariable int customerID) {
 		LOGGER.warn("Received DELETE request for Customer with ID: {}", customerID);
 		enquiryDetailsService.deleteEnquiryDetails(customerID);
