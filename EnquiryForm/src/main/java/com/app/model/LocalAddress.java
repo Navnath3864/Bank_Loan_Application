@@ -1,4 +1,3 @@
-
 package com.app.model;
 
 import jakarta.persistence.Entity;
@@ -45,3 +44,4 @@ public class LocalAddress {
 	private String streetName;
 
 }
+

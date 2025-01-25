@@ -1,4 +1,3 @@
-
 package com.app.model;
 
 import jakarta.persistence.Entity;
@@ -52,3 +51,4 @@ public class GuarantorDetails {
 	private String guarantorPermanentAddress;
 
 }
+

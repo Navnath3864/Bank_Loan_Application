@@ -1,4 +1,3 @@
-
 package com.app.model;
 
 import jakarta.persistence.Entity;
@@ -34,3 +33,4 @@ public class DependentInfo {
 	private double familyIncome;
 
 }
+
