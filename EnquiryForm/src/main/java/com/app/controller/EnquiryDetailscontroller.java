@@ -66,7 +66,7 @@ public class EnquiryDetailscontroller {
 		return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
 	}
 
-	@DeleteMapping("/api/enquiry/{customerId}")
+	@DeleteMapping("/api/enquiry/{customerID}")
 	public void deleteEnquiryDetails(@PathVariable int customerID) {
 		LOGGER.warn("Received DELETE request for Customer with ID: {}", customerID);
 		enquiryDetailsService.deleteEnquiryDetails(customerID);
@@ -113,7 +113,7 @@ public class EnquiryDetailscontroller {
 		return new ResponseEntity<List<EnquiryDetails>>(approvedCibilList,HttpStatus.OK);
 	}
 	
-	@PutMapping("/api/saveCustomerLoanApplicationForm")
+	@PostMapping("/api/saveCustomerLoanApplicationForm")
 	public ResponseEntity<CustomerLoanApplication> customerLoanApplicationForm(@RequestBody CustomerLoanApplication customerLoanApplication)
 	{
 			 CustomerLoanApplication customerLoanApplication2 = enquiryDetailsService.saveCustomerLoanApplicationForm(customerLoanApplication);

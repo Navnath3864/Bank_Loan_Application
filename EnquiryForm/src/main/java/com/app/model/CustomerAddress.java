@@ -9,11 +9,14 @@ import lombok.Data;
 @Entity
 @Data
 public class CustomerAddress {
-@Id
-private int customerAddressId;
-@OneToOne(cascade = CascadeType.ALL)
-private PermanentAddress permanentAddress;
-@OneToOne(cascade = CascadeType.ALL)
-private LocalAddress localAddress;
+	
+	@Id
+	private int customerAddressId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private PermanentAddress permanentAddress;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private LocalAddress localAddress;
 
 }

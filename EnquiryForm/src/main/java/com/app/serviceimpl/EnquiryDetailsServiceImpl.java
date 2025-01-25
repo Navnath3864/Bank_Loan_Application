@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.model.CustomerLoanApplication;
 import com.app.model.EnquiryDetails;
+import com.app.repository.CustomerLoanApplicationRepository;
 import com.app.repository.EnquiryDetailsRepository;
 import com.app.service.EnquiryDetailsService;
 
@@ -15,6 +16,8 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
 	
+	@Autowired
+	CustomerLoanApplicationRepository customerLoanApplicationRepository;
 
 	@Override
 
@@ -64,15 +67,19 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 
 	@Override
 	public CustomerLoanApplication saveCustomerLoanApplicationForm(CustomerLoanApplication customerLoanApplication) {
-		int customer_id = customerLoanApplication.getCustomerId();
-		EnquiryDetails details = enquiryDetailsRepository.findByCustomerID(customer_id);
-		customerLoanApplication.setCustomerName(details.getFirstName()+details.getLastName());
-		customerLoanApplication.setCustomerAge(details.getAge());
-		customerLoanApplication.setCustomerEmail(details.getEmail());
-		customerLoanApplication.setCustomerMobileNumber(details.getMobileNo());
-		customerLoanApplication.setCibilScoreData(details.getCibilScoreData());
+//		int customer_id = customerLoanApplication.getCustomerID();
+//		EnquiryDetails details = enquiryDetailsRepository.findByCustomerID(customer_id);
+//		System.out.println(details);
+//		String name = details.getFirstName()+details.getLastName();
+//		customerLoanApplication.setCustomerName(name);
+//		customerLoanApplication.setCustomerAge(details.getAge());
+//		customerLoanApplication.setCustomerEmail(details.getEmail());
+//		customerLoanApplication.setCustomerMobileNumber(details.getMobileNo());
+//		customerLoanApplication.setCibilScoreData(details.getCibilScoreData());
+//		
+		CustomerLoanApplication application = customerLoanApplicationRepository.save(customerLoanApplication);
 		
-		return customerLoanApplication;
+		return application;
 	}
 	
 	
