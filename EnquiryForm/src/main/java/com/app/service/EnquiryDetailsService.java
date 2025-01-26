@@ -20,4 +20,6 @@ public interface EnquiryDetailsService {
 
 	CustomerLoanApplication saveCustomerLoanApplicationForm(CustomerLoanApplication customerLoanApplication);
 
+	EnquiryDetails updateEnquiry(EnquiryDetails enquiryDetails);
+
 }

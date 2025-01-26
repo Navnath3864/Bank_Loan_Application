@@ -38,7 +38,7 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 			customerLoanApplication.setCustomerAge(details.getAge());
 			customerLoanApplication.setCustomerEmail(details.getEmail());
 			customerLoanApplication.setCustomerMobileNumber(details.getMobileNo());
-			customerLoanApplication.setCibilScoreData(details.getCibilScoreData());
+	//		customerLoanApplication.setCibilScoreData(details.getCibilScoreData());
 			return customerLoanApplicationRepository.save(customerLoanApplication);
 		}
 		

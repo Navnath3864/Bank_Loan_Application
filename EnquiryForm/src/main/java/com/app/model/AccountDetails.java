@@ -20,23 +20,23 @@ public class AccountDetails {
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private int accountId;
 
-//	@NotBlank(message = "Account Type is required")
-//	@Pattern(regexp = "^(Savings|Current|Fixed Deposit)$", message = "Account Type must be 'Savings', 'Current', or 'Fixed Deposit'")
+	@NotBlank(message = "Account Type is required")
+	@Pattern(regexp = "^(Savings|Current|Fixed Deposit)$", message = "Account Type must be 'Savings', 'Current', or 'Fixed Deposit'")
     private String accounType;
 	
-//	@DecimalMin(value = "0.0", inclusive = true, message = "Account balance must be non-negative")
+	@DecimalMin(value = "0.0", inclusive = true, message = "Account balance must be non-negative")
     private double accountBalance;
-//	
-//	@NotBlank(message = "AccountHolderName is required")
+	
+	@NotBlank(message = "AccountHolderName is required")
 	@Pattern(regexp = "^[A-Z][a-zA-Z]*$", message = "AccountHolderName must start with a capital letter and contain only alphabets")
     private String accountHolderName;
 	
-//	@NotBlank(message = "Account status is required")
-//	@Pattern(regexp = "^(Active|Inactive|Closed)$", message = "Account status must be 'Active', 'Inactive', or 'Closed'")
+	@NotBlank(message = "Account status is required")
+	@Pattern(regexp = "^(Active|Inactive|Closed)$", message = "Account status must be 'Active', 'Inactive', or 'Closed'")
     private String accountStatus;
-//	
-//	@Min(value = 1000000000L, message = "Account number must be at least 10 digits")
-//	@Max(value = 9999999999L, message = "Account number cannot exceed 10 digits")
+	
+	@Min(value = 1000000000L, message = "Account number must be at least 10 digits")
+	@Max(value = 9999999999L, message = "Account number cannot exceed 10 digits")
     private  long accountNumber;
 
 }

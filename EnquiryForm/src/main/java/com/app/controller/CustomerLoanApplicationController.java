@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.model.CustomerLoanApplication;
 import com.app.service.CustomerLoanApplicationService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/app")
 public class CustomerLoanApplicationController {
@@ -20,7 +22,7 @@ public class CustomerLoanApplicationController {
 	@Autowired
 	CustomerLoanApplicationService customerLoanApplicationService; 
 	@PostMapping("/api/customerloanapplication/{id}")
-	public ResponseEntity<CustomerLoanApplication> saveDetails(@RequestBody CustomerLoanApplication customerLoanApplication,@PathVariable int id)
+	public ResponseEntity<CustomerLoanApplication> saveDetails(@Valid @RequestBody CustomerLoanApplication customerLoanApplication,@PathVariable int id)
 	{
 		CustomerLoanApplication details=customerLoanApplicationService.saveDetails(customerLoanApplication,id);
 		return new ResponseEntity<CustomerLoanApplication>(details, HttpStatus.CREATED);

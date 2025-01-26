@@ -1,6 +1,7 @@
 package com.app.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,6 +81,15 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 		CustomerLoanApplication application = customerLoanApplicationRepository.save(customerLoanApplication);
 		
 		return application;
+	}
+
+
+	@Override
+	public EnquiryDetails updateEnquiry(EnquiryDetails enquiryDetails) {
+		
+			EnquiryDetails e=enquiryDetailsRepository.save(enquiryDetails);
+		
+		return e;
 	}
 	
 	

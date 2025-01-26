@@ -59,13 +59,30 @@ public class EnquiryDetailscontroller {
 		return new ResponseEntity<EnquiryDetails>(enquiryDetails, HttpStatus.OK);
 	}
 
+	@PutMapping("/api/updatecibil/{customerID}")
+	public ResponseEntity<EnquiryDetails> getDataFromCibilScoreData(@PathVariable int customerID) {
+		LOGGER.info("Received PUT request for Customer with customerId: {}",customerID);
+		String url = "http://localhost:8087/oe/getenquirydata/"+customerID;
+		EnquiryDetails enq = rs.getForObject(url, EnquiryDetails.class);
+		EnquiryDetails eqEnquiryDetails=enquiryDetailsService.updateEnquiryDetails(enq, customerID);
+		LOGGER.debug("Customer updated successfully: {}", eqEnquiryDetails);
+		return new ResponseEntity<EnquiryDetails>(eqEnquiryDetails, HttpStatus.ACCEPTED);
+	}
+	
+	@PutMapping("/api/updateenquirydetails")
+	public ResponseEntity<EnquiryDetails> updateEnquiryDetails(@RequestBody EnquiryDetails enquiryDetails) {
+		EnquiryDetails enDetails = enquiryDetailsService.updateEnquiry(enquiryDetails);
+		return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
+	}
+
+
 	@PutMapping("/api/updateenquirydetails/{customerID}")
 	public ResponseEntity<EnquiryDetails> updateEnquiryDetails(@RequestBody EnquiryDetails enquiryDetails,
 			@PathVariable int customerID) {
 		EnquiryDetails enDetails = enquiryDetailsService.updateEnquiryDetails(enquiryDetails, customerID);
 		return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
 	}
-
+	
 	@DeleteMapping("/api/enquiry/{customerID}")
 	public void deleteEnquiryDetails(@PathVariable int customerID) {
 		LOGGER.warn("Received DELETE request for Customer with ID: {}", customerID);
@@ -88,14 +105,14 @@ public class EnquiryDetailscontroller {
 		rs.postForObject(url, pendingEquiryList, List.class);
 		return new ResponseEntity<>(pendingEquiryList, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/api/showrejectedenquiry")
 	public ResponseEntity<List<EnquiryDetails>> getRejectedEnquiry(){
 		List<EnquiryDetails> rejectedEnquiryList= new ArrayList<EnquiryDetails>();
 		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
 		for(EnquiryDetails enq : aeDetails) {
 			if(enq.getCibilScoreData()!=null && enq.getCibilScoreData().getCibilScore()<500) {
-				rejectedEnquiryList.add(enq);
+			rejectedEnquiryList.add(enq);
 			}
 		}
 		return new ResponseEntity<List<EnquiryDetails>>(rejectedEnquiryList,HttpStatus.OK);
