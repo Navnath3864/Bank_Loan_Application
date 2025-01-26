@@ -74,10 +74,11 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		<dependency>
-		<groupId>com.app</groupId>
-			<artifactId>CibilScoreDetails</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+    <groupId>com.app</groupId>
+	<artifactId>CibilScoreDetails</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+</dependency>
+
 		<!--
 		https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
 		<dependency>
