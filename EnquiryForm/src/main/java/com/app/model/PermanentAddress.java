@@ -1,8 +1,10 @@
-
 package com.app.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -14,6 +16,7 @@ import lombok.Data;
 public class PermanentAddress {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int permanentAddressId;
 	
 	@NotBlank(message = "Areaname is required")
@@ -32,8 +35,8 @@ public class PermanentAddress {
 	@Pattern(regexp = "^[a-zA-Z\\s]*$", message = "State must contain only alphabetic characters and spaces")
 	private String state;
 	
-	@NotNull(message = "Pincode is required")
-	@Pattern(regexp = "^[0-9]{6}$", message = "Pincode must be a 6-digit number")
+	@Min(value = 100000, message = "Pincode must be a 6-digit number and not less than 100000")
+    @Max(value = 999999, message = "Pincode must be a 6-digit number and not more than 999999")
 	private	long pincode;
 	
 	@NotNull(message = "House number is required")
@@ -41,7 +44,8 @@ public class PermanentAddress {
 	private	int houseNumber;
 	
 	@NotBlank(message = "StreetName are required")
-	@Pattern(regexp = "^[a-zA-Z\\s]*$", message = "StreetName must contain only alphabetic characters and spaces")
+	@Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Street name can only contain letters, numbers, and spaces")
 	private	String streetName;
 
 }
+

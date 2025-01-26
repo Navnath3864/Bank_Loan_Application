@@ -2,6 +2,8 @@
 package com.app.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Max;
@@ -15,6 +17,7 @@ import lombok.Data;
 public class AccountDetails {
      
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
     private int accountId;
 
 	@NotBlank(message = "Account Type is required")

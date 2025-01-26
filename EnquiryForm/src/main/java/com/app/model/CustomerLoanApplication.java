@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Email;
@@ -22,18 +23,15 @@ public class CustomerLoanApplication {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int customerID;
+	private int customerLoanID;
 	
-	@NotBlank(message = "CustomerName is required")
-	@Pattern(regexp = "^[A-Z][a-zA-Z]*$", message = "CustomerName must start with a capital letter and contain only alphabets")
 	private String customerName;
 	
 	@NotBlank(message = "CustomerDateOfBirthis required")
 	@Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$", message = "CustomerDateOfBirth must be in the format yyyy-MM-dd")
 	private String customerDateOfBirth;
 	
-	@Min(value = 18, message = "Rquired Age at Least 18 Years")
-	@NotNull(message = "Age is required to fill")
+	
 	private int customerAge;
 	
 	@NotNull(message = "Tenure is required")
@@ -45,11 +43,10 @@ public class CustomerLoanApplication {
 	@Pattern(regexp = "^(Male|Female|Other)$", message = "Gender must be 'Male', 'Female', or 'Other'")
 	private String customerGender;
 	
-	@Email(message = "Invalid Email Id")
+	
 	private String customerEmail;
 	
-	@Min(value = 1000000000, message = "Mobile number must be at least 10 digits")
-	@Max(value = 9999999999L, message = "Mobile number must be at most 10 digits")
+	
 	private double customerMobileNumber;
 	
 	@Min(value = 1000000000, message = "Mobile number must be at least 10 digits")
@@ -69,21 +66,27 @@ public class CustomerLoanApplication {
 	private String loanStatus;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private AllPersonalDocs allPersonalDocument;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private DependentInfo familyDependentInfo;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private CustomerAddress customerAddress;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private CibilScoreData cibilScoreData;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private AccountDetails accountDetails;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private GuarantorDetails gurantorDetails;
 	
 }
