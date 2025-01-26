@@ -4,6 +4,7 @@ package com.app.service;
 
 import java.util.List;
 
+import com.app.model.CustomerLoanApplication;
 import com.app.model.EnquiryDetails;
 
 public interface EnquiryDetailsService {
@@ -16,5 +17,9 @@ public interface EnquiryDetailsService {
 	void deleteEnquiryDetails(int customerID);
 
 	EnquiryDetails updateEnquiryDetails(EnquiryDetails enquiryDetails, int customerID);
+
+	CustomerLoanApplication saveCustomerLoanApplicationForm(CustomerLoanApplication customerLoanApplication);
+
+	EnquiryDetails updateEnquiry(EnquiryDetails enquiryDetails);
 
 }
