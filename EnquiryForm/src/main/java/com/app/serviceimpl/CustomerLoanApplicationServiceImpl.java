@@ -17,8 +17,8 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 	@Override
 	public CustomerLoanApplication saveDetails(CustomerLoanApplication customerLoanApplication) {
 		
-		CustomerLoanApplication details=customerLoanApplicationRepository.save(customerLoanApplication);
-		return details;
+		return customerLoanApplicationRepository.save(customerLoanApplication);
+		
 	}
 
 }
