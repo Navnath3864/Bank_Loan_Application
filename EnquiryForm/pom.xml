@@ -76,7 +76,7 @@
 		<dependency>
     <groupId>com.app</groupId>
 	<artifactId>CibilScoreDetails</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1-SNAPSHOT</version	>
 </dependency>
 
 		<!--
