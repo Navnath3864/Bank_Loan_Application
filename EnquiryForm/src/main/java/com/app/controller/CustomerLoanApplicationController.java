@@ -21,6 +21,7 @@ public class CustomerLoanApplicationController {
 
 	@Autowired
 	CustomerLoanApplicationService customerLoanApplicationService; 
+	
 	@PostMapping("/api/customerloanapplication/{id}")
 	public ResponseEntity<CustomerLoanApplication> saveDetails(@Valid @RequestBody CustomerLoanApplication customerLoanApplication,@PathVariable int id)
 	{
