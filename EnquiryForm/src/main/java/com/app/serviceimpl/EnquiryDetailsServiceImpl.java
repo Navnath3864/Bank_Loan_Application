@@ -65,7 +65,6 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 
 	
 
-
 	@Override
 	public CustomerLoanApplication saveCustomerLoanApplicationForm(CustomerLoanApplication customerLoanApplication) {
 //		int customer_id = customerLoanApplication.getCustomerID();
@@ -91,8 +90,6 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 		
 		return e;
 	}
-	
-	
 	
 
 }

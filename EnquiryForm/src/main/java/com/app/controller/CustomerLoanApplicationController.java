@@ -37,7 +37,7 @@ public class CustomerLoanApplicationController {
 	
 	
 	@PostMapping("/api/customerloanapplication/{id}")
-	public ResponseEntity<CustomerLoanApplication> saveDetails(@RequestPart("data") String customerLoanApplication,
+	public ResponseEntity<CustomerLoanApplication> saveDetails(@RequestPart("data") @Valid String customerLoanApplication,
           @RequestPart("addressProof") MultipartFile addressProof,
             @RequestPart("panCard") MultipartFile panCard,
             @RequestPart("incomeTax") MultipartFile incomeTax,
@@ -52,5 +52,6 @@ public class CustomerLoanApplicationController {
 		return new ResponseEntity<CustomerLoanApplication>(details, HttpStatus.CREATED);
 	}
 	
+
 
 }

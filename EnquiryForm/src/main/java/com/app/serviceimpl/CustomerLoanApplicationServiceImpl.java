@@ -2,6 +2,8 @@ package com.app.serviceimpl;
 
 import java.io.IOException;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,7 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 	
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
-	
+
 
 //	@Override
 //	public CustomerLoanApplication saveDetails(CustomerLoanApplication customerLoanApplication, int id) {
@@ -89,5 +91,13 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 		return customerLoanApplication;
 
 	}
+	
+@Override
+public List<CustomerLoanApplication> getAllCustomerApplicationData() {
+	
+	return customerLoanApplicationRepository.findAll();
+}
+	
+	
 
 }
