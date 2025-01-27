@@ -18,8 +18,8 @@ public interface EnquiryDetailsService {
 
 	EnquiryDetails updateEnquiryDetails(EnquiryDetails enquiryDetails, int customerID);
 
+
 	CustomerLoanApplication saveCustomerLoanApplicationForm(CustomerLoanApplication customerLoanApplication);
 
 	EnquiryDetails updateEnquiry(EnquiryDetails enquiryDetails);
-
 }
