@@ -6,6 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
+
 @EnableDiscoveryClient
 @SpringBootApplication
 public class EnquiryFormApplication {
@@ -13,11 +14,12 @@ public class EnquiryFormApplication {
 		SpringApplication.run(EnquiryFormApplication.class, args);
 		
 	}
+	
 	@Bean
 	//@LoadBalanced
-	public RestTemplate rt() {
+	public RestTemplate rt() 
+	{
 		return new RestTemplate();
-		
-		
+			
 	}
 }

@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.model.CustomerLoanApplication;
 import com.app.model.EnquiryDetails;
+import com.app.repository.CustomerLoanApplicationRepository;
 import com.app.repository.EnquiryDetailsRepository;
 import com.app.service.EnquiryDetailsService;
 
@@ -14,6 +16,8 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
 	
+	@Autowired
+	CustomerLoanApplicationRepository customerLoanApplicationRepository;
 
 	@Override
 
@@ -56,7 +60,11 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 		}
 		return null;
 	}
+
+
 	
+
+
 	
 	
 
