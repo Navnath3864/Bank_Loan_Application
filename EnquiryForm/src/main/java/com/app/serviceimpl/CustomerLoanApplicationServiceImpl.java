@@ -1,6 +1,7 @@
 package com.app.serviceimpl;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +33,7 @@ public CustomerLoanApplication saveDetails(String customerLoanApplication1, int 
 	CustomerLoanApplication customerLoanApplication = null; 
 	EnquiryDetails details = enquiryDetailsRepository.findByCustomerID(id);
 	ObjectMapper objectMapper = new ObjectMapper();
-
+	
 	try {
 	    customerLoanApplication = objectMapper.readValue(
 	            customerLoanApplication1, CustomerLoanApplication.class);
@@ -40,7 +41,7 @@ public CustomerLoanApplication saveDetails(String customerLoanApplication1, int 
 	    e.printStackTrace();
 	}
 	if (customerLoanApplication != null) {
-	    customerLoanApplication.setCustomerName(details.getFirstName() + details.getLastName());
+	    customerLoanApplication.setCustomerName(details.getFirstName()+details.getLastName());
 	    customerLoanApplication.setCustomerAge(details.getAge());
 	    customerLoanApplication.setCustomerEmail(details.getEmail());
 	    customerLoanApplication.setCustomerMobileNumber(details.getMobileNo());
@@ -59,8 +60,6 @@ public CustomerLoanApplication saveDetails(String customerLoanApplication1, int 
 	        customerLoanApplication.getAllPersonalDocument().setSignature(signature.getBytes());
 	        customerLoanApplication.getAllPersonalDocument().setBankCheque(bankCheque.getBytes());
 	        customerLoanApplication.getAllPersonalDocument().setSalarySlips(salarySlips.getBytes());
-	        System.out.println(customerLoanApplication);
-	        customerLoanApplicationRepository.save(customerLoanApplication);
 	      
 	    } catch (IOException e) {
 	        e.printStackTrace();
@@ -69,6 +68,12 @@ public CustomerLoanApplication saveDetails(String customerLoanApplication1, int 
 
 	return customerLoanApplication;
 
+}
+
+@Override
+public List<CustomerLoanApplication> getAllCustomerApplicationData() {
+	
+	return customerLoanApplicationRepository.findAll();
 }
 	
 	
