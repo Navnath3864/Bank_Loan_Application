@@ -97,7 +97,26 @@ public List<CustomerLoanApplication> getAllCustomerApplicationData() {
 	
 	return customerLoanApplicationRepository.findAll();
 }
+
+
+@Override
+public CustomerLoanApplication updateLoanStatus(int id, String loanStatus) {
+	CustomerLoanApplication customerLoanApplication =customerLoanApplicationRepository.findByCustomerLoanID(id);
+	customerLoanApplication.setLoanStatus(loanStatus);
+	CustomerLoanApplication customerLoanApplication2 = customerLoanApplicationRepository.save(customerLoanApplication);
+	return customerLoanApplication2;
+}
+
+@Override
+public List<CustomerLoanApplication> getAllLoansubmited() {
+	String status = "Submit";
+	return customerLoanApplicationRepository.findAllByLoanStatus(status);
+}
 	
-	
+@Override
+public List<CustomerLoanApplication> getAllVerifiedData() {
+	String status = "Verified";
+	return customerLoanApplicationRepository.findAllByLoanStatus(status);
+}	
 
 }

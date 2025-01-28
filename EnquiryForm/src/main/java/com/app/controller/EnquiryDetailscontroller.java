@@ -37,6 +37,14 @@
 		
 		private static final Logger LOGGER=LoggerFactory.getLogger(EnquiryDetailscontroller.class);
 
+	@PostMapping("/api/enquiry")
+	public ResponseEntity<EnquiryDetails> saveDetails(@Valid @RequestBody EnquiryDetails enquiryDetails) {
+			LOGGER.info("Received POST request to create Customer: {}", enquiryDetails);
+			EnquiryDetails enDetails = enquiryDetailsService.saveDetails(enquiryDetails);
+			LOGGER.debug("Customer created successfully: {}", enquiryDetails);
+			return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
+	}
+	
 	@GetMapping("/api/getallenquirydetails") 
 	public ResponseEntity<List<EnquiryDetails>> getAllEnquiryDetails() {
 		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
@@ -76,29 +84,16 @@
 	}
 	
 	
-	
-		@PostMapping("/api/enquiry")
-		public ResponseEntity<EnquiryDetails> saveDetails(@Valid @RequestBody EnquiryDetails enquiryDetails) {
-			LOGGER.info("Received POST request to create Customer: {}", enquiryDetails);
-			EnquiryDetails enDetails = enquiryDetailsService.saveDetails(enquiryDetails);
-			LOGGER.debug("Customer created successfully: {}", enquiryDetails);
-			return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
-		}
-	
-
-		
-	
-		@DeleteMapping("/api/enquiry/{customerID}")
-		public void deleteEnquiryDetails(@PathVariable int customerID) {
+	@DeleteMapping("/api/enquiry/{customerID}")
+	public void deleteEnquiryDetails(@PathVariable int customerID) {
 			LOGGER.warn("Received DELETE request for Customer with ID: {}", customerID);
 			enquiryDetailsService.deleteEnquiryDetails(customerID);
 			LOGGER.info("Customer deleted successfully: {}", customerID);
-		}
+	}
 	
 		
-	
-		@PostMapping("/api/getpendingenquiry") 
-		public ResponseEntity<List<EnquiryDetails>> getAllPendingEnquiry() {
+	@PostMapping("/api/getpendingenquiry") 
+	public ResponseEntity<List<EnquiryDetails>> getAllPendingEnquiry() {
 			List<EnquiryDetails> pendingEquiryList = new ArrayList<EnquiryDetails>();
 			List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
 			for(EnquiryDetails enq : aeDetails) {
@@ -109,10 +104,10 @@
 			String url = "http://localhost:8087/oe/getpendingstatus";
 			rs.postForObject(url, pendingEquiryList, List.class);
 			return new ResponseEntity<>(pendingEquiryList, HttpStatus.OK);
-		}
+	}
 		
-		@GetMapping("/api/showrejectedenquiry")
-		public ResponseEntity<List<EnquiryDetails>> getRejectedEnquiry(){
+	@GetMapping("/api/showrejectedenquiry")
+	public ResponseEntity<List<EnquiryDetails>> getRejectedEnquiry(){
 			List<EnquiryDetails> rejectedEnquiryList= new ArrayList<EnquiryDetails>();
 			List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
 			for(EnquiryDetails enq : aeDetails) {
@@ -121,10 +116,10 @@
 				}
 			}
 			return new ResponseEntity<List<EnquiryDetails>>(rejectedEnquiryList,HttpStatus.OK);
-		}
+	}
 		
-		@GetMapping("/api/cibilapproved")
-		public ResponseEntity<List<EnquiryDetails>> getCibilApproved(){
+	@GetMapping("/api/cibilapproved")
+	public ResponseEntity<List<EnquiryDetails>> getCibilApproved(){
 			List<EnquiryDetails> approvedCibilList= new ArrayList<EnquiryDetails>();
 			List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
 			for(EnquiryDetails enq : aeDetails) {
@@ -133,7 +128,7 @@
 				}
 			}
 			return new ResponseEntity<List<EnquiryDetails>>(approvedCibilList,HttpStatus.OK);
-		}
-		
-		
 	}
+		
+		
+}
