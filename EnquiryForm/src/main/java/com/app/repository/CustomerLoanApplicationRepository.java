@@ -14,4 +14,5 @@ public interface CustomerLoanApplicationRepository extends JpaRepository<Custome
 	
 	List<CustomerLoanApplication> findAllByLoanStatus(String loanStatus);
 	
+
 }

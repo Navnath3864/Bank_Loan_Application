@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Email;
@@ -14,6 +15,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import jakarta.websocket.OnError;
 import lombok.Data;
 
 @Entity
@@ -24,6 +26,7 @@ public class CustomerLoanApplication {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int customerLoanID;
 	
+ 
 	@NotBlank(message = "CustomerName is required")
 	@Pattern(regexp = "^[A-Z][a-zA-Z]*$", message = "CustomerName must start with a capital letter and contain only alphabets")
 	private String customerName;
@@ -44,7 +47,7 @@ public class CustomerLoanApplication {
 	@NotBlank(message = "Gender is required")
 	@Pattern(regexp = "^(Male|Female|Other)$", message = "Gender must be 'Male', 'Female', or 'Other'")
 	private String customerGender;
-	
+
 	@Email(message = "Invalid Email Id")
 	private String customerEmail;
 	
@@ -69,21 +72,38 @@ public class CustomerLoanApplication {
 	private String loanStatus;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private AllPersonalDocs allPersonalDocument;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private DependentInfo familyDependentInfo;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private CustomerAddress customerAddress;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private CibilScoreData cibilScoreData;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private AccountDetails accountDetails;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private GuarantorDetails gurantorDetails;
 	
+	@OneToOne
+	private LoanDisbursement loanDisbursement;
+	
+	@OneToOne
+	private Ledger ledger;
+	
+	@OneToOne
+	private SanctionLetter sanctionLetter;
+	
+	@OneToOne
+	private CustomerVerification customerVerification;
 }

@@ -1,4 +1,3 @@
-
 package com.app.model;
 
 import jakarta.persistence.Entity;
@@ -48,10 +47,12 @@ public class GuarantorDetails {
 	
 	@NotBlank(message = "Guarantor local address is required")
 	@Pattern(regexp = "^[a-zA-Z\\s,\\.]*$", message = "guarantorLocalAddress must contain only alphabetic characters, spaces, commas, and periods")
+	@Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "guarantorLocalAddress must only contain letters, numbers, and spaces")
 	private String guarantorLocalAddress;
 	
 	@NotBlank(message = "Guarantor permant address is required")
 	@Pattern(regexp = "^[a-zA-Z\\s,\\.]*$", message = "guarantorPermanentAddress must contain only alphabetic characters, spaces, commas, and periods")
+	@Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "guarantorPermanentAddress must only contain letters, numbers, and spaces")
 	private String guarantorPermanentAddress;
 
 }

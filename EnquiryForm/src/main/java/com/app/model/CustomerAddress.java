@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.Valid;
 import lombok.Data;
 
 @Entity
@@ -17,9 +18,11 @@ public class CustomerAddress {
 	private int customerAddressId;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private PermanentAddress permanentAddress;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private LocalAddress localAddress;
 
 }

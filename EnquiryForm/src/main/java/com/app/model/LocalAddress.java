@@ -1,4 +1,3 @@
-
 package com.app.model;
 
 import jakarta.persistence.Entity;
@@ -38,6 +37,10 @@ public class LocalAddress {
 	
 	@Min(value = 100000, message = "Invalid pincode")
 	@Max(value = 999999, message = "Invalid pincode")
+
+	
+	@Min(value = 100000, message = "Pincode must be a 6-digit number and not less than 100000")
+    @Max(value = 999999, message = "Pincode must be a 6-digit number and not more than 999999")
 	private long pincode;
 	
 	@NotNull(message = "House number is required")
@@ -46,6 +49,7 @@ public class LocalAddress {
 	
 	@NotBlank(message = "StreetName are required")
 	@Pattern(regexp = "^[a-zA-Z\\s]*$", message = "StreetName must contain only alphabetic characters and spaces")
+	@Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Street name can only contain letters, numbers, and spaces")
 	private String streetName;
 
 }
