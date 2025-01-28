@@ -60,12 +60,12 @@ public CustomerLoanApplication saveDetails(String customerLoanApplication1, int 
 	        customerLoanApplication.getAllPersonalDocument().setSignature(signature.getBytes());
 	        customerLoanApplication.getAllPersonalDocument().setBankCheque(bankCheque.getBytes());
 	        customerLoanApplication.getAllPersonalDocument().setSalarySlips(salarySlips.getBytes());
-	      
+	       
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
 	
-
+	    customerLoanApplicationRepository.save(customerLoanApplication);
 	return customerLoanApplication;
 
 }
@@ -87,6 +87,12 @@ public CustomerLoanApplication updateLoanStatus(int id, String loanStatus) {
 @Override
 public List<CustomerLoanApplication> getAllLoansubmited() {
 	String status = "Submit";
+	return customerLoanApplicationRepository.findAllByLoanStatus(status);
+}
+
+@Override
+public List<CustomerLoanApplication> getAllVerifiedData() {
+	String status = "Verified";
 	return customerLoanApplicationRepository.findAllByLoanStatus(status);
 }
 	

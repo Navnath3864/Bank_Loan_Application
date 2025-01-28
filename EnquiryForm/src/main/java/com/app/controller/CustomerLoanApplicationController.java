@@ -63,4 +63,11 @@ public class CustomerLoanApplicationController {
 		List<CustomerLoanApplication> list = customerLoanApplicationService.getAllLoansubmited();
 		return new ResponseEntity<List<CustomerLoanApplication>>(list,HttpStatus.OK);
 	}
+	
+	@GetMapping("/api/getAllVerifiedData")
+	public ResponseEntity<List<CustomerLoanApplication>> getAllVerifiedData()
+	{
+		List<CustomerLoanApplication> list = customerLoanApplicationService.getAllVerifiedData();
+		return new ResponseEntity<List<CustomerLoanApplication>>(list,HttpStatus.OK);
+	}
 }
