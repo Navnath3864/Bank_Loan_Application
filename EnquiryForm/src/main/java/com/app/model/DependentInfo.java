@@ -19,21 +19,21 @@ public class DependentInfo {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int dependentInfoId; 
 	
-//	@NotNull(message = "Number of family members is required")
+	@NotNull(message = "Number of family members is required")
 	private int noOfFamilyMember;
 	
-//	@NotNull(message = "Number of children is required")
+	@NotNull(message = "Number of children is required")
 	private int noOfChild;
 	
-//	@NotBlank(message = "Marital status is required")
-//	@Pattern(regexp = "^(Single|Married|Divorced)$", message = "Marital status must be 'Single', 'Married', or 'Divorced'")
+	@NotBlank(message = "Marital status is required")
+	@Pattern(regexp = "^(Single|Married|Divorced)$", message = "Marital status must be 'Single', 'Married', or 'Divorced'")
 	private String maritalStatus;
 	
-//	@NotBlank(message = "Dependent member is required")
-//	@Pattern(regexp = "^[a-zA-Z\\s]*$", message = "dependentMember must contain only alphabetic characters and spaces")
+	@NotBlank(message = "Dependent member is required")
+	@Pattern(regexp = "^[a-zA-Z\\s]*$", message = "dependentMember must contain only alphabetic characters and spaces")
 	private String dependentMember;
 	
-//	@Min(value = 10000, message = "Family income must be greater than 10000")
+	@Min(value = 10000, message = "Family income must be greater than 10000")
 	private double familyIncome;
 
 }

@@ -113,5 +113,4 @@
 			return new ResponseEntity<List<EnquiryDetails>>(approvedCibilList,HttpStatus.OK);
 		}
 		
-		
 	}
