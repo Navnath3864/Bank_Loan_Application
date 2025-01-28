@@ -63,9 +63,6 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	}
 
 
-	
-
-
 
 	@Override
 	public CustomerLoanApplication saveCustomerLoanApplicationForm(CustomerLoanApplication customerLoanApplication) {
@@ -93,6 +90,6 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 		return e;
 	}
 	
-	
+
 
 }

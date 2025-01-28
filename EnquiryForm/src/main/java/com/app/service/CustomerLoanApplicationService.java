@@ -2,9 +2,12 @@ package com.app.service;
 
 import java.util.List;
 
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.model.CustomerLoanApplication;
+
+import jakarta.validation.Valid;
 
 public interface CustomerLoanApplicationService {
 	public CustomerLoanApplication saveDetails(String customerLoanApplication, int id, MultipartFile addressProof,
@@ -12,13 +15,19 @@ public interface CustomerLoanApplicationService {
 			MultipartFile signature, MultipartFile bankCheque, MultipartFile salarySlips);
 
 
+
 	//CustomerLoanApplication saveDetails(CustomerLoanApplication customerLoanApplication, int id);
+
 
 	public List<CustomerLoanApplication> getAllCustomerApplicationData();
 
 
+
+	
 	public CustomerLoanApplication updateLoanStatus(int id, String loanStatus);
 
 	public List<CustomerLoanApplication> getAllLoansubmited();
+	
+	public List<CustomerLoanApplication> getAllVerifiedData();
 
 }

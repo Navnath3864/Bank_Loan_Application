@@ -296,6 +296,7 @@ public class EnquiryDetailscontroller {
 		return new ResponseEntity<EnquiryDetails>(enDetails, HttpStatus.ACCEPTED);
 	}
 		
+		
 	@GetMapping("/api/getallenquirydetails") 
 	public ResponseEntity<List<EnquiryDetails>> getAllEnquiryDetails() {
 		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
@@ -335,19 +336,8 @@ public class EnquiryDetailscontroller {
 	}
 	
 
-	@PostMapping("/api/getpendingenquiry") 
-	public ResponseEntity<List<EnquiryDetails>> getAllPendingEnquiry() {
-		List<EnquiryDetails> pendingEquiryList = new ArrayList<EnquiryDetails>();
-		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
-		for(EnquiryDetails enq : aeDetails) {
-			if(enq.getEnquiryStatus().equals("cibilpending")) {
-				pendingEquiryList.add(enq);
-			}
-		}
-		String url = "http://localhost:8087/oe/getpendingstatus";
-		rs.postForObject(url, pendingEquiryList, List.class);
-		return new ResponseEntity<>(pendingEquiryList, HttpStatus.OK);
-	}
+
+	
 	
 	@GetMapping("/api/showrejectedenquiry")
 	public ResponseEntity<List<EnquiryDetails>> getRejectedEnquiry(){
@@ -359,19 +349,40 @@ public class EnquiryDetailscontroller {
 			}
 		}
 		return new ResponseEntity<List<EnquiryDetails>>(rejectedEnquiryList,HttpStatus.OK);
+
 	}
 	
+	
+		
+	@PostMapping("/api/getpendingenquiry") 
+	public ResponseEntity<List<EnquiryDetails>> getAllPendingEnquiry() {
+			List<EnquiryDetails> pendingEquiryList = new ArrayList<EnquiryDetails>();
+			List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
+			for(EnquiryDetails enq : aeDetails) {
+				if(enq.getEnquiryStatus().equals("cibilpending")) {
+					pendingEquiryList.add(enq);
+				}
+			}
+			String url = "http://localhost:8087/oe/getpendingstatus";
+			rs.postForObject(url, pendingEquiryList, List.class);
+			return new ResponseEntity<>(pendingEquiryList, HttpStatus.OK);
+	}
+		
+
+		
 	@GetMapping("/api/cibilapproved")
 	public ResponseEntity<List<EnquiryDetails>> getCibilApproved(){
-		List<EnquiryDetails> approvedCibilList= new ArrayList<EnquiryDetails>();
-		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
-		for(EnquiryDetails enq : aeDetails) {
-			if(enq.getCibilScoreData()!=null && enq.getCibilScoreData().getCibilScore()>=500) {
-				approvedCibilList.add(enq);
+			List<EnquiryDetails> approvedCibilList= new ArrayList<EnquiryDetails>();
+			List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
+			for(EnquiryDetails enq : aeDetails) {
+				if(enq.getCibilScoreData()!=null && enq.getCibilScoreData().getCibilScore()>=500) {
+					approvedCibilList.add(enq);
+				}
 			}
-		}
-		return new ResponseEntity<List<EnquiryDetails>>(approvedCibilList,HttpStatus.OK);
+			return new ResponseEntity<List<EnquiryDetails>>(approvedCibilList,HttpStatus.OK);
 	}
+
+	
 	
 	@PostMapping("/api/saveCustomerLoanApplicationForm")
 	public ResponseEntity<CustomerLoanApplication> customerLoanApplicationForm(
@@ -385,4 +396,7 @@ public class EnquiryDetailscontroller {
 	
 
 }
+
+		
+		
 
