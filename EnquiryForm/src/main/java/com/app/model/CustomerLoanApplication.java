@@ -7,13 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Entity
@@ -70,6 +63,21 @@ public class CustomerLoanApplication {
 	@Valid
 	private GuarantorDetails gurantorDetails;
 
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement loandisbursement;
+
+	
+	@OneToOne
+	private LoanDisbursement loanDisbursement;
+	
+	@OneToOne
+	private Ledger ledger;
+	
+	@OneToOne
+	private SanctionLetter sanctionLetter;
+	
+	@OneToOne
+	private CustomerVerification customerVerification;
+
 }
