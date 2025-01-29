@@ -30,6 +30,8 @@ public class SanctionServiceImpl implements SanctionService {
 
 	@Autowired
 	CustomerLoanApplicationRepository applicationRepository;
+	@Autowired
+	EmailServiceImpl emailServiceImpl;
 
 	@Override
 	public CustomerLoanApplication sanctionLetter(int customerLoanID, SanctionLetter letter) {
@@ -74,7 +76,7 @@ public class SanctionServiceImpl implements SanctionService {
 
 			Image img = null;
 			try {
-				img = Image.getInstance("C:\\Users\\lenovo\\Desktop\\neoli.jpg");
+				img = Image.getInstance("C:/Users/91966/Desktop/cartoon.jpeg");
 				img.scalePercent(50, 50);
 				img.setAlignment(Element.ALIGN_RIGHT);
 				document.add(img);
@@ -142,6 +144,7 @@ public class SanctionServiceImpl implements SanctionService {
 			ByteArrayInputStream byt = new ByteArrayInputStream(opt.toByteArray());
 			byte[] bytes = byt.readAllBytes();
 			customerLoanApplication.getSanctionLetter().setSanctionLetter(bytes);
+			emailServiceImpl.sendSanctionLetterMailToCustomer(customerLoanID);
 			return applicationRepository.save(customerLoanApplication);
 		} else {
 			return null;

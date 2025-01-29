@@ -12,15 +12,15 @@ import lombok.Data;
 @Entity
 @Data
 public class CustomerAddress {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)	
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerAddressId;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@Valid
 	private PermanentAddress permanentAddress;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@Valid
 	private LocalAddress localAddress;

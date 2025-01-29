@@ -14,6 +14,7 @@ import lombok.Data;
 @Data
 public class AllPersonalDocs {
 
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int documentID ;

@@ -108,6 +108,7 @@ public class EnquiryDetailscontroller {
 		rs.postForObject(url, pendingEquiryList, List.class);
 		LOGGER.debug("Fetched {} enquirydetails Successfully whose cibilscore is pending", pendingEquiryList.size());
 		return new ResponseEntity<>(pendingEquiryList, HttpStatus.OK);
+
 	}
 
 	@GetMapping("/api/showrejectedenquiry")
@@ -141,3 +142,5 @@ public class EnquiryDetailscontroller {
 
 
 }
+
+

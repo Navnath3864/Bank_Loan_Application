@@ -12,13 +12,13 @@ import com.app.model.CustomerLoanApplication;
 import com.app.service.EmailService;
 
 @RestController
-@RequestMapping("/app/")
+@RequestMapping("/app")
 public class EmailController {
 	
 	@Autowired
 	EmailService  emailService;
 	
-	@GetMapping("/api/sendSantionLetterMail/{customer_ID}")
+	@GetMapping("/api/sendSantionLetterMail/{customerLoan_ID}")
 	public ResponseEntity<CustomerLoanApplication> sendSanctionLetterMail(@PathVariable int customer_ID)
 	{
 		CustomerLoanApplication customerLoanApplication = emailService.sendSanctionLetterMailToCustomer(customer_ID);

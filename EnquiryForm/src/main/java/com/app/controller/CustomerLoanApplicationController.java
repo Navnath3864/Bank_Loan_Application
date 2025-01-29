@@ -25,11 +25,11 @@ import com.app.service.CustomerLoanApplicationService;
 public class CustomerLoanApplicationController {
 
 	@Autowired
-
 	CustomerLoanApplicationService customerLoanApplicationService;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EnquiryDetailscontroller.class);
 
+	@PostMapping("/api/customerloanapplication/{id}")
 	public ResponseEntity<CustomerLoanApplication> saveDetails(@RequestPart("data") String customerLoanApplication,
 			@RequestPart("addressProof") MultipartFile addressProof, @RequestPart("panCard") MultipartFile panCard,
 			@RequestPart("incomeTax") MultipartFile incomeTax, @RequestPart("addharCard") MultipartFile addharCard,
@@ -39,6 +39,7 @@ public class CustomerLoanApplicationController {
 		LOGGER.info("Received POST request to create Customerloanapplication Form");
 		CustomerLoanApplication details = customerLoanApplicationService.saveDetails(customerLoanApplication, id,
 				addressProof, panCard, incomeTax, addharCard, photo, signature, bankCheque, salarySlips);
+
 		LOGGER.debug("Customerloanapplication Form created successfully: {}", details);
 
 		return new ResponseEntity<CustomerLoanApplication>(details, HttpStatus.CREATED);
