@@ -335,11 +335,7 @@ public class EnquiryDetailscontroller {
 		return new ResponseEntity<EnquiryDetails>(eqEnquiryDetails, HttpStatus.ACCEPTED);
 	}
 	
-
-
-	
-	
-	@GetMapping("/api/showrejectedenquiry")
+ @GetMapping("/api/showrejectedenquiry")
 	public ResponseEntity<List<EnquiryDetails>> getRejectedEnquiry(){
 		List<EnquiryDetails> rejectedEnquiryList= new ArrayList<EnquiryDetails>();
 		List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
@@ -353,7 +349,6 @@ public class EnquiryDetailscontroller {
 	}
 	
 	
-		
 	@PostMapping("/api/getpendingenquiry") 
 	public ResponseEntity<List<EnquiryDetails>> getAllPendingEnquiry() {
 			List<EnquiryDetails> pendingEquiryList = new ArrayList<EnquiryDetails>();
@@ -368,9 +363,7 @@ public class EnquiryDetailscontroller {
 			return new ResponseEntity<>(pendingEquiryList, HttpStatus.OK);
 	}
 		
-
-		
-	@GetMapping("/api/cibilapproved")
+    @GetMapping("/api/cibilapproved")
 	public ResponseEntity<List<EnquiryDetails>> getCibilApproved(){
 			List<EnquiryDetails> approvedCibilList= new ArrayList<EnquiryDetails>();
 			List<EnquiryDetails> aeDetails = (List<EnquiryDetails>) enquiryDetailsService.getAllEquiryDetails();
@@ -382,8 +375,6 @@ public class EnquiryDetailscontroller {
 			return new ResponseEntity<List<EnquiryDetails>>(approvedCibilList,HttpStatus.OK);
 	}
 
-	
-	
 	@PostMapping("/api/saveCustomerLoanApplicationForm")
 	public ResponseEntity<CustomerLoanApplication> customerLoanApplicationForm(
 			@RequestBody CustomerLoanApplication customerLoanApplication) {

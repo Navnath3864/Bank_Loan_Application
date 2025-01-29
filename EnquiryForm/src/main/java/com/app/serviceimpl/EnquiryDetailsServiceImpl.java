@@ -21,21 +21,21 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 	CustomerLoanApplicationRepository customerLoanApplicationRepository;
 
 	@Override
-
-
-	public EnquiryDetails saveDetails(EnquiryDetails enquiryDetails) {
+     public EnquiryDetails saveDetails(EnquiryDetails enquiryDetails) 
+	{
 		return enquiryDetailsRepository.save(enquiryDetails);
 	}
 
 	
 	@Override
-    public List<EnquiryDetails> getAllEquiryDetails() {
-		return enquiryDetailsRepository.findAll();
+    public List<EnquiryDetails> getAllEquiryDetails()
+	{
+	   return enquiryDetailsRepository.findAll();
 	}
 	
-	public EnquiryDetails getSingleEnquiryDetails(int customerID) {
-
-		return enquiryDetailsRepository.findByCustomerID(customerID);
+	public EnquiryDetails getSingleEnquiryDetails(int customerID) 
+	{
+       return enquiryDetailsRepository.findByCustomerID(customerID);
 	}
 
 	public void deleteEnquiryDetails(int customerID) {
@@ -61,10 +61,7 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 		}
 		return null;
 	}
-
-
-
-	@Override
+@Override
 	public CustomerLoanApplication saveCustomerLoanApplicationForm(CustomerLoanApplication customerLoanApplication) {
 //		int customer_id = customerLoanApplication.getCustomerID();
 //		EnquiryDetails details = enquiryDetailsRepository.findByCustomerID(customer_id);
@@ -80,9 +77,7 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 		
 		return application;
 	}
-
-
-	@Override
+    @Override
 	public EnquiryDetails updateEnquiry(EnquiryDetails enquiryDetails) {
 		
 			EnquiryDetails e=enquiryDetailsRepository.save(enquiryDetails);
