@@ -101,7 +101,7 @@ public class CustomerLoanApplication {
 	@OneToOne
 	private Ledger ledger;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private SanctionLetter sanctionLetter;
 	
 	@OneToOne
