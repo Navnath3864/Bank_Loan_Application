@@ -85,4 +85,6 @@ public class CustomerLoanApplication {
 	@Valid
 	private GuarantorDetails gurantorDetails;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	private LoanDisbursement loandisbursement;
 }
