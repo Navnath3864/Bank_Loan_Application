@@ -9,6 +9,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import jakarta.validation.Valid;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class CustomerAddress {
+
 		@Id
 		@OneToOne(cascade = CascadeType.ALL)
 		@NotNull(message = "Permanent address is required")
@@ -35,5 +37,5 @@ public class CustomerAddress {
 		
 		@NotBlank(message = "City name is required")
 		private String city;
-		
+
 }

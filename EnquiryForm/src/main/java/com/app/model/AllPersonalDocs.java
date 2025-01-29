@@ -1,5 +1,6 @@
 package com.app.model;
 
+import org.springframework.web.multipart.MultipartFile;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -32,17 +33,14 @@ public class AllPersonalDocs {
 	private byte[] incomeTax;
 
 	@Lob
-	@NotNull(message = "Photo is required")
 	@Column(length=999999999)
 	private byte[] photo;
-	
-	
+
 	@Lob
 	@NotNull(message = "Signature is required")
 	@Column(length=999999999)
 	private byte[] signature;
-	
-	
+
 	@Lob
 	@NotNull(message = "Bank Check is required")
 	@Column(length=999999999)
