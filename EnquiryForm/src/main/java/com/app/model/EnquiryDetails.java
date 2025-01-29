@@ -1,5 +1,8 @@
 package com.app.model;
 
+
+import com.app.cibil.model.CibilScoreData;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -50,5 +53,4 @@ public class EnquiryDetails {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cibil_id")
 	private CibilScoreData cibilScoreData;
-
 }

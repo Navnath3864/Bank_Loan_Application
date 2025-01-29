@@ -1,5 +1,9 @@
 package com.app.model;
 
+
+
+import com.app.cibil.model.CibilScoreData;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -55,8 +59,8 @@ public class CustomerLoanApplication {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@Valid
-	private CibilScoreData cibilScoreData;
-
+    private CibilScoreData cibilScoreData;
+    
 	@OneToOne(cascade = CascadeType.ALL)
 	@Valid
 	private AccountDetails accountDetails;
