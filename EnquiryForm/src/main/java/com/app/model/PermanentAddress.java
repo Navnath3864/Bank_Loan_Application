@@ -18,6 +18,7 @@ public class PermanentAddress {
 	private String cityName;
 	private String district;
 	private String state;
+
 	private long pincode;
 	private int houseNumber;
 	private String streetName;

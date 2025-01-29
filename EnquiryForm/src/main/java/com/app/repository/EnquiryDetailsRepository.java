@@ -8,7 +8,5 @@ import com.app.model.EnquiryDetails;
 @Repository
 public interface EnquiryDetailsRepository extends JpaRepository<EnquiryDetails, Integer> {
 		EnquiryDetails findByCustomerID(int customerID);
-		
-		 
 	
 }

@@ -7,6 +7,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.websocket.OnError;
 import lombok.Data;
 
 @Entity
@@ -20,23 +29,16 @@ public class CustomerLoanApplication {
 	private String customerName;
 
 	private String customerDateOfBirth;
-
 	private int customerAge;
 
 	private int requiredTenure;
 
 	private String customerGender;
-
 	private String customerEmail;
-
 	private double customerMobileNumber;
-
 	private double customerAdditionalMobileNumber;
-
 	private double customerAmountPaidForHome;
-
 	private double customerTotalLoanRequired;
-
 	private String loanStatus;
 
 	@OneToOne(cascade = CascadeType.ALL)
@@ -63,20 +65,18 @@ public class CustomerLoanApplication {
 	@Valid
 	private GuarantorDetails gurantorDetails;
 
-
 	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement loandisbursement;
 
-	
 	@OneToOne
 	private LoanDisbursement loanDisbursement;
-	
+
 	@OneToOne
 	private Ledger ledger;
-	
-	@OneToOne
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private SanctionLetter sanctionLetter;
-	
+
 	@OneToOne
 	private CustomerVerification customerVerification;
 
