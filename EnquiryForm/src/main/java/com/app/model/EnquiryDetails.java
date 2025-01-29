@@ -51,16 +51,4 @@ public class EnquiryDetails {
 	@JoinColumn(name = "cibil_id")
 	private CibilScoreData cibilScoreData;
 
-//	"firstName":"Harshada",
-//	"lastName":"Thorat",
-//	"age":25,
-//	"email":"thoratharshada065@gmail.com",
-//	"mobileNo":7028763328,
-//	"pancardNo":"harshada12"
-//	"enquiryStatus":"pending",
-//  "CibilScoreData":{
- //}
-
-//	"pancardNo":"harshada12",
-//  "cibilScoreData":{}
 }
