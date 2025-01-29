@@ -8,35 +8,32 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Data
 public class CustomerAddress {
-
-@Id
-@OneToOne(cascade = CascadeType.ALL)
-@NotNull(message = "Permanent address is required")
-private PermanentAddress permanentAddress;
-
-@OneToOne(cascade = CascadeType.ALL)
-@NotNull(message = "Local address is required")
-private LocalAddress localAddress;
+		@Id
+		@OneToOne(cascade = CascadeType.ALL)
+		@NotNull(message = "Permanent address is required")
+		private PermanentAddress permanentAddress;
+		
+		@OneToOne(cascade = CascadeType.ALL)
+		@NotNull(message = "Local address is required")
+		private LocalAddress localAddress;
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)	
-	private int customerAddressId;
+		@Id
+		@GeneratedValue(strategy=GenerationType.AUTO)	
+		private int customerAddressId;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private PermanentAddress permanentAddress;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	private LocalAddress localAddress;
-
-@NotBlank(message = "Street name is required")
-private String street;
-
-@NotBlank(message = "City name is required")
-private String city;
-
+		@NotBlank(message = "Street name is required")
+		private String street;
+		
+		@NotBlank(message = "City name is required")
+		private String city;
+		
 }

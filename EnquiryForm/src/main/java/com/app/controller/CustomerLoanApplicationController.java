@@ -14,13 +14,19 @@ import org.springframework.web.multipart.MultipartFile;import com.app.model.AllP
 import com.app.model.CustomerLoanApplication;
 import com.app.service.CustomerLoanApplicationService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/app")
 public class CustomerLoanApplicationController {
 
 	@Autowired
 	CustomerLoanApplicationService customerLoanApplicationService; 
+	
 	@PostMapping("/api/customerloanapplication/{id}")
+
+//	public ResponseEntity<CustomerLoanApplication> saveDetails(@Valid @RequestBody CustomerLoanApplication customerLoanApplication,@PathVariable int id){
+
 	public ResponseEntity<CustomerLoanApplication> saveDetails(@RequestPart("data") String customerLoanApplication,
             @RequestPart("addressProof") MultipartFile addressProof,
             @RequestPart("panCard") MultipartFile panCard,
@@ -30,6 +36,7 @@ public class CustomerLoanApplicationController {
             @RequestPart("signature") MultipartFile signature,
             @RequestPart("bankCheque") MultipartFile bankCheque,
             @RequestPart("salarySlips") MultipartFile salarySlips,@PathVariable int id)
+
 	{
 		
 		CustomerLoanApplication details=customerLoanApplicationService.saveDetails(customerLoanApplication,id,addressProof,panCard,incomeTax,addharCard,photo,signature,bankCheque,salarySlips);

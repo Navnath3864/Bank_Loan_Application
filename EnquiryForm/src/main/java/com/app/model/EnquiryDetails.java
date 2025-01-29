@@ -58,9 +58,5 @@ public class EnquiryDetails {
 //	"mobileNo":7028763328,
 //	"pancardNo":"harshada12"
 //	"enquiryStatus":"pending",
-//  "CibilScoreData":{
- //}
 
-//	"pancardNo":"harshada12",
-//  "cibilScoreData":{}
 }
