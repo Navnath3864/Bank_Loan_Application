@@ -19,4 +19,8 @@ public interface CustomerLoanApplicationService {
 
 	public List<CustomerLoanApplication> getAllVerifiedData();
 
+	public CustomerLoanApplication updateLoanStatusofCustomerApplication(int id, String loanStatus);
+
+	public List<CustomerLoanApplication> getAllSanctioedData();
+
 }

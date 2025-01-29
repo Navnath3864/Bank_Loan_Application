@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.model.CustomerLoanApplication;
@@ -26,6 +27,9 @@ public class CustomerLoanApplicationController {
 
 	@Autowired
 	CustomerLoanApplicationService customerLoanApplicationService;
+	
+	@Autowired
+	RestTemplate restTemplate;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EnquiryDetailscontroller.class);
 
@@ -77,5 +81,22 @@ public class CustomerLoanApplicationController {
 		List<CustomerLoanApplication> list = customerLoanApplicationService.getAllVerifiedData();
 		LOGGER.debug("Fetched {} Customerloanapplication Form successfully whose loanStatus is Verified", list.size());
 		return new ResponseEntity<List<CustomerLoanApplication>>(list, HttpStatus.OK);
+	}
+	
+	@PutMapping("/api/updateLoanStatusofCustomerApplication/{id}")
+	public ResponseEntity<CustomerLoanApplication> updateLoanStatusofCustomerApplication(
+			@RequestBody CustomerLoanApplication customerLoanApplication, @PathVariable int id) {
+		LOGGER.info("Received PUT request for CustomerController  with customerLoanID: {}", id);
+		CustomerLoanApplication application = customerLoanApplicationService.updateLoanStatusofCustomerApplication(id,
+				customerLoanApplication.getLoanStatus());
+		LOGGER.debug("Customerloanapplication Form updated successfully: {}", application);
+		return new ResponseEntity<CustomerLoanApplication>(application, HttpStatus.ACCEPTED);
+	}
+	
+	@GetMapping("/api/getAllSanctionedData")
+	public ResponseEntity<List<CustomerLoanApplication>> getALlSanctioedData()
+	{
+		 List<CustomerLoanApplication> list = customerLoanApplicationService.getAllSanctioedData();
+		return new  ResponseEntity<List<CustomerLoanApplication>>(list,HttpStatus.OK);
 	}
 }
