@@ -24,9 +24,6 @@ public class CustomerLoanApplicationController {
 	CustomerLoanApplicationService customerLoanApplicationService; 
 	
 	@PostMapping("/api/customerloanapplication/{id}")
-
-//	public ResponseEntity<CustomerLoanApplication> saveDetails(@Valid @RequestBody CustomerLoanApplication customerLoanApplication,@PathVariable int id){
-
 	public ResponseEntity<CustomerLoanApplication> saveDetails(@RequestPart("data") String customerLoanApplication,
             @RequestPart("addressProof") MultipartFile addressProof,
             @RequestPart("panCard") MultipartFile panCard,

@@ -33,9 +33,6 @@ public class CustomerLoanApplication {
 	
 	private int customerAge;
 	
-	@NotNull(message = "Tenure is required")
-	@Min(value = 1, message = "Tenure must be at least 1 year")
-	@Max(value = 50, message = "Tenure cannot exceed 50 years")
 	private int requiredTenure;
 	
 	@NotBlank(message = "Gender is required")

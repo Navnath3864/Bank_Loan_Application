@@ -12,5 +12,4 @@ public interface CustomerLoanApplicationService {
 			MultipartFile panCard, MultipartFile incomeTax, MultipartFile addharCard, MultipartFile photo,
 			MultipartFile signature, MultipartFile bankCheque, MultipartFile salarySlips);
 
-	CustomerLoanApplication saveDetails(CustomerLoanApplication customerLoanApplication, int id);
 }
