@@ -7,8 +7,8 @@ import lombok.Data;
 @Entity
 @Data
 public class LoanDisbursement {
-@Id
 
+@Id
 private int agreementId;
 private int loanNo;
 private String agreementDate;
@@ -23,4 +23,6 @@ private String paymentStatus;
 private String amountPaidDate;
 
 
+	
+	
 }

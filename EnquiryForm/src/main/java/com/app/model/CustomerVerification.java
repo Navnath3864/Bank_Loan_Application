@@ -2,6 +2,7 @@ package com.app.model;
 
 import java.util.Date;
 
+
 import org.hibernate.annotations.GeneratorType;
 
 import jakarta.persistence.Entity;
@@ -20,4 +21,5 @@ private Date verificationDate;
 private String  status;
 private String remarks;
 
+	
 }
