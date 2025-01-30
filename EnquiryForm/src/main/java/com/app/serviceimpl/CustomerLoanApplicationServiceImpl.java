@@ -3,6 +3,7 @@ package com.app.serviceimpl;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -299,6 +300,37 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 	public List<CustomerLoanApplication> getAllVerifiedData() {
 		String status = "Verified";
 		return customerLoanApplicationRepository.findAllByLoanStatus(status);
+	}
+
+	@Override
+	public CustomerLoanApplication updateLoanStatusofCustomerApplication(int id, String loanStatus) {
+		CustomerLoanApplication customerLoanApplication = customerLoanApplicationRepository.findByCustomerLoanID(id);
+		customerLoanApplication.setLoanStatus(loanStatus);
+		CustomerLoanApplication customerLoanApplication2 = customerLoanApplicationRepository
+				.save(customerLoanApplication);
+		return customerLoanApplication2;
+
+	}
+
+	@Override
+	public List<CustomerLoanApplication> getAllSanctioedData() {
+		String status = "Sanctioned";
+		return customerLoanApplicationRepository.findAllByLoanStatus(status);
+	}
+
+	@Override
+	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
+			CustomerLoanApplication customerLoanApplication) {
+		Optional<CustomerLoanApplication> customerLoanapp = customerLoanApplicationRepository.findById(customerLoanId);
+		if(customerLoanapp.isPresent()) {
+			customerLoanapp.get().setLoandisbursement(customerLoanApplication.getLoandisbursement());
+			System.out.println(customerLoanapp.get());
+			return customerLoanApplicationRepository.save(customerLoanapp.get());
+			
+		}
+		
+		return null;
+
 	}
 
 }

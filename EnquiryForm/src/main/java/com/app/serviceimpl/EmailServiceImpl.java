@@ -23,11 +23,8 @@ public class EmailServiceImpl implements EmailService {
 
 	@Autowired
 	JavaMailSender sender;
+	@Value("${spring.mail.username}") private String fromEmail;
 
-	/*
-	 * @Value("${spring.mail.username}") private String fromEmail;
-	 * 
-	 */	
 	@Override
 	public CustomerLoanApplication sendSanctionLetterMailToCustomer(int customer_ID) {
 
@@ -39,8 +36,8 @@ public class EmailServiceImpl implements EmailService {
 		MimeMessageHelper mimemessageHelper;
 		try {
 			mimemessageHelper = new MimeMessageHelper(mimemessage, true);
-			mimemessageHelper.setFrom("navnathgutte20@gmail.com");
-			mimemessageHelper.setTo("navnathgutte20@gmail.com");
+			mimemessageHelper.setFrom(fromEmail);
+			mimemessageHelper.setTo(customerLoanApplication.getCustomerEmail());
 			mimemessageHelper.setSubject("Happy Finance Ltd. Sanction Letter");
 			String text = "Dear " + customerLoanApplication.getCustomerName() + ",\n" + "\n"
 					+ "This letter is to inform you that we have reviewed your request for a credit loan . We are pleased to offer you a credit loan of "
