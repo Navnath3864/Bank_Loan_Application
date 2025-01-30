@@ -23,10 +23,10 @@ public class EmailServiceImpl implements EmailService {
 
 	@Autowired
 	JavaMailSender sender;
+	@Value("${spring.mail.username}") private String fromEmail;
 
-	
-	 @Value("${spring.mail.username}") private String fromEmail;
 		
+
 	@Override
 	public CustomerLoanApplication sendSanctionLetterMailToCustomer(int customerLoan_ID) {
 

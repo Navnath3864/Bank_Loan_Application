@@ -300,5 +300,22 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 		String status = "Verified";
 		return customerLoanApplicationRepository.findAllByLoanStatus(status);
 	}
-	
+
+
+	@Override
+	public CustomerLoanApplication updateLoanStatusofCustomerApplication(int id, String loanStatus) {
+		CustomerLoanApplication customerLoanApplication = customerLoanApplicationRepository.findByCustomerLoanID(id);
+		customerLoanApplication.setLoanStatus(loanStatus);
+		CustomerLoanApplication customerLoanApplication2 = customerLoanApplicationRepository
+				.save(customerLoanApplication);
+		return customerLoanApplication2;
+		
+	}
+
+	@Override
+	public List<CustomerLoanApplication> getAllSanctioedData() {
+		String status = "Sanctioned";
+		return customerLoanApplicationRepository.findAllByLoanStatus(status);
+	}
+
 }

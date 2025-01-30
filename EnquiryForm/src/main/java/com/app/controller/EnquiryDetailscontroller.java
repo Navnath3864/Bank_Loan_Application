@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.app.model.CustomerLoanApplication;
 import com.app.model.EnquiryDetails;
 import com.app.service.EnquiryDetailsService;
 
@@ -108,6 +107,7 @@ public class EnquiryDetailscontroller {
 		rs.postForObject(url, pendingEquiryList, List.class);
 		LOGGER.debug("Fetched {} enquirydetails Successfully whose cibilscore is pending", pendingEquiryList.size());
 		return new ResponseEntity<>(pendingEquiryList, HttpStatus.OK);
+
 	}
 
 	@GetMapping("/api/showrejectedenquiry")
@@ -139,14 +139,7 @@ public class EnquiryDetailscontroller {
 
 	}
 
-	
-
-	@PostMapping("/api/saveCustomerLoanApplicationForm")
-	public ResponseEntity<CustomerLoanApplication> customerLoanApplicationForm(
-			@RequestBody CustomerLoanApplication customerLoanApplication) {
-		CustomerLoanApplication customerLoanApplication2 = enquiryDetailsService
-				.saveCustomerLoanApplicationForm(customerLoanApplication);
-		return new ResponseEntity<CustomerLoanApplication>(customerLoanApplication2, HttpStatus.ACCEPTED);
-	}
 
 }
+
+
