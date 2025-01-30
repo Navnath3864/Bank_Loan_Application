@@ -23,4 +23,7 @@ public interface CustomerLoanApplicationService {
 
 	public List<CustomerLoanApplication> getAllSanctioedData();
 
+	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
+			CustomerLoanApplication customerLoanApplication);
+
 }
