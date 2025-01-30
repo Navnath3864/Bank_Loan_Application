@@ -4,6 +4,6 @@ import com.app.model.CustomerLoanApplication;
 
 public interface EmailService {
 
-	CustomerLoanApplication sendSanctionLetterMailToCustomer(int customer_ID);
+	CustomerLoanApplication sendSanctionLetterMailToCustomer(int customerLoan_ID);
 
 }

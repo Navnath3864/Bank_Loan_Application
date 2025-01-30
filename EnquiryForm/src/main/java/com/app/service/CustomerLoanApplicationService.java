@@ -18,5 +18,6 @@ public interface CustomerLoanApplicationService {
 	public List<CustomerLoanApplication> getAllLoansubmited();
 
 	public List<CustomerLoanApplication> getAllVerifiedData();
+	
 
 }

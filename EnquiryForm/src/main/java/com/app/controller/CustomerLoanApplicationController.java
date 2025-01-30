@@ -76,5 +76,5 @@ public class CustomerLoanApplicationController {
 		LOGGER.debug("Fetched {} Customerloanapplication Form successfully whose loanStatus is Verified", list.size());
 		return new ResponseEntity<List<CustomerLoanApplication>>(list, HttpStatus.OK);
 	}
-
+	
 }

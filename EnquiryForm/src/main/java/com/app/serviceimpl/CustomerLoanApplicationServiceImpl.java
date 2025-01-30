@@ -300,5 +300,5 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 		String status = "Verified";
 		return customerLoanApplicationRepository.findAllByLoanStatus(status);
 	}
-
+	
 }
