@@ -99,4 +99,16 @@ public class CustomerLoanApplicationController {
 		 List<CustomerLoanApplication> list = customerLoanApplicationService.getAllSanctioedData();
 		return new  ResponseEntity<List<CustomerLoanApplication>>(list,HttpStatus.OK);
 	}
+	
+	@PutMapping("/api/Loandisbursement/{customerLoanId}")
+	public ResponseEntity<CustomerLoanApplication> updateLoandisBursement(
+			@RequestBody CustomerLoanApplication customerLoanApplication, @PathVariable int customerLoanId) {
+		System.out.println(customerLoanId+" --->"+customerLoanApplication.getLoandisbursement());
+		LOGGER.info("Received PUT request for CustomerController  with customerLoanID: {}", customerLoanId);
+		CustomerLoanApplication application = customerLoanApplicationService.updateLoandisBursement(customerLoanId,
+				customerLoanApplication);
+		LOGGER.debug("Customerloanapplication Form updated successfully: {}", application);
+		return new ResponseEntity<CustomerLoanApplication>(application, HttpStatus.ACCEPTED);
+	}
+	
 }

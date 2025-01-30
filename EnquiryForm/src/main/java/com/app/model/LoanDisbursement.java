@@ -26,3 +26,4 @@ public class LoanDisbursement {
 	private String paymentStatus;
 	private String amountPaidDate;
 }
+
