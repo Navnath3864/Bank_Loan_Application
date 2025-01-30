@@ -36,3 +36,4 @@ private	String status;
 private byte[] sanctionLetter;
 
 }
+

@@ -37,6 +37,7 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 		CustomerLoanApplication customerLoanApplication = null;
 
 		EnquiryDetails details = enquiryDetailsRepository.findByCustomerID(id);
+		
 		ObjectMapper objectMapper = new ObjectMapper();
 
 		try {
@@ -298,6 +299,22 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 	@Override
 	public List<CustomerLoanApplication> getAllVerifiedData() {
 		String status = "Verified";
+		return customerLoanApplicationRepository.findAllByLoanStatus(status);
+	}
+	
+	@Override
+	public CustomerLoanApplication updateLoanStatusofCustomerApplication(int id, String loanStatus) {
+		CustomerLoanApplication customerLoanApplication = customerLoanApplicationRepository.findByCustomerLoanID(id);
+		customerLoanApplication.setLoanStatus(loanStatus);
+		CustomerLoanApplication customerLoanApplication2 = customerLoanApplicationRepository
+				.save(customerLoanApplication);
+		return customerLoanApplication2;
+		
+	}
+
+	@Override
+	public List<CustomerLoanApplication> getAllSanctioedData() {
+		String status = "Sanctioned";
 		return customerLoanApplicationRepository.findAllByLoanStatus(status);
 	}
 

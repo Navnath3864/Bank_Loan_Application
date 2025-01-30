@@ -76,5 +76,22 @@ public class CustomerLoanApplicationController {
 		LOGGER.debug("Fetched {} Customerloanapplication Form successfully whose loanStatus is Verified", list.size());
 		return new ResponseEntity<List<CustomerLoanApplication>>(list, HttpStatus.OK);
 	}
+	
+	@PutMapping("/api/updateLoanStatusofCustomerApplication/{id}")
+	public ResponseEntity<CustomerLoanApplication> updateLoanStatusofCustomerApplication(
+			@RequestBody CustomerLoanApplication customerLoanApplication, @PathVariable int id) {
+		LOGGER.info("Received PUT request for CustomerController  with customerLoanID: {}", id);
+		CustomerLoanApplication application = customerLoanApplicationService.updateLoanStatusofCustomerApplication(id,
+				customerLoanApplication.getLoanStatus());
+		LOGGER.debug("Customerloanapplication Form updated successfully: {}", application);
+		return new ResponseEntity<CustomerLoanApplication>(application, HttpStatus.ACCEPTED);
+	}
+	
+	@GetMapping("/api/getAllSanctionedData")
+	public ResponseEntity<List<CustomerLoanApplication>> getALlSanctioedData()
+	{
+		 List<CustomerLoanApplication> list = customerLoanApplicationService.getAllSanctioedData();
+		return new  ResponseEntity<List<CustomerLoanApplication>>(list,HttpStatus.OK);
+	}
 
 }

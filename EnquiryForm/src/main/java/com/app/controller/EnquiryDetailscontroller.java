@@ -141,12 +141,4 @@ public class EnquiryDetailscontroller {
 
 	
 
-	@PostMapping("/api/saveCustomerLoanApplicationForm")
-	public ResponseEntity<CustomerLoanApplication> customerLoanApplicationForm(
-			@RequestBody CustomerLoanApplication customerLoanApplication) {
-		CustomerLoanApplication customerLoanApplication2 = enquiryDetailsService
-				.saveCustomerLoanApplicationForm(customerLoanApplication);
-		return new ResponseEntity<CustomerLoanApplication>(customerLoanApplication2, HttpStatus.ACCEPTED);
-	}
-
 }

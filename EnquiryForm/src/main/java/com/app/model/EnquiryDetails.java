@@ -1,7 +1,6 @@
 package com.app.model;
 
-
-import com.app.cibil.model.CibilScoreData;
+import com.app.model.CibilScoreData;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

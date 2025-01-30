@@ -1,8 +1,6 @@
 package com.app.model;
 
-
-
-import com.app.cibil.model.CibilScoreData;
+import com.app.model.CibilScoreData;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -11,16 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.websocket.OnError;
 import lombok.Data;
+
 
 @Entity
 @Data
@@ -71,9 +61,6 @@ public class CustomerLoanApplication {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement loandisbursement;
-
-	@OneToOne
-	private LoanDisbursement loanDisbursement;
 
 	@OneToOne
 	private Ledger ledger;
