@@ -102,8 +102,7 @@ public class CustomerLoanApplicationController {
 
 	
 	@PutMapping("/api/Loandisbursement/{customerLoanId}")
-	public ResponseEntity<CustomerLoanApplication> updateLoandisBursement(
-			@RequestBody CustomerLoanApplication customerLoanApplication, @PathVariable int customerLoanId) {
+	public ResponseEntity<CustomerLoanApplication> updateLoandisBursement(@RequestBody CustomerLoanApplication customerLoanApplication, @PathVariable int customerLoanId) {
 		System.out.println(customerLoanId+" --->"+customerLoanApplication.getLoandisbursement());
 		LOGGER.info("Received PUT request for CustomerController  with customerLoanID: {}", customerLoanId);
 		CustomerLoanApplication application = customerLoanApplicationService.updateLoandisBursement(customerLoanId,

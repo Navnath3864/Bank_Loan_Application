@@ -67,7 +67,7 @@ public class CustomerLoanApplication {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement loandisbursement;
-
+   
 	@OneToOne
 	private LoanDisbursement loanDisbursement;
 
