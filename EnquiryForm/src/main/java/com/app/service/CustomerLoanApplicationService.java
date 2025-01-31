@@ -27,11 +27,15 @@ public interface CustomerLoanApplicationService {
 	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
 			CustomerLoanApplication customerLoanApplication);
 
+
 	public AllPersonalDocs updateDocument(int customerid, MultipartFile addressProof, MultipartFile panCard,
 			MultipartFile incomeTax, MultipartFile addharCard, MultipartFile photo, MultipartFile signature,
 			MultipartFile bankCheque, MultipartFile salarySlips);
 
 
 	 
+
+	public CustomerLoanApplication getCustomerLoanApplication(int customerLoanID);
+
 
 }

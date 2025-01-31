@@ -360,9 +360,16 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 			} catch (IOException e) {
 				e.printStackTrace();
 			
-
+			}
+			return null;
 		}
 
+
+	public CustomerLoanApplication getCustomerLoanApplication(int customerLoanID) {
+		Optional<CustomerLoanApplication> custLoanApp=customerLoanApplicationRepository.findById(customerLoanID);
+		if(custLoanApp.isPresent()) {
+			return custLoanApp.get();
+		}
 		return null;
 	}
 

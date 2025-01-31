@@ -111,6 +111,7 @@ public class CustomerLoanApplicationController {
 		return new ResponseEntity<CustomerLoanApplication>(application, HttpStatus.ACCEPTED);
 	}
 
+
 	@PutMapping("/api/updateDocument/{customerLoanId}")
 	public ResponseEntity<AllPersonalDocs> updateDocument(@PathVariable("customerLoanId") int customerid,
 			@RequestPart("addressProof") MultipartFile addressProof, @RequestPart("panCard") MultipartFile panCard,
@@ -123,4 +124,11 @@ public class CustomerLoanApplicationController {
 				panCard, incomeTax, addharCard, photo, signature, bankCheque, salarySlips);
 		return new ResponseEntity<AllPersonalDocs>(allPersonalDocs, HttpStatus.ACCEPTED);
 	}
+
+	@GetMapping("/api/getcustomerloanapplication/{customerLoanID}")
+	public ResponseEntity<CustomerLoanApplication> getCustomerLoanApplication(@PathVariable int customerLoanID){
+		CustomerLoanApplication custLoanApp= customerLoanApplicationService.getCustomerLoanApplication(customerLoanID);
+		return new ResponseEntity<CustomerLoanApplication>(custLoanApp,HttpStatus.OK);
+	}
+	
 }
