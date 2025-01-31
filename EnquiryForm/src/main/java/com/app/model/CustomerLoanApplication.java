@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.Valid;
 import lombok.Data;
@@ -62,7 +63,7 @@ public class CustomerLoanApplication {
 	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement loandisbursement;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Ledger ledger;
 
 	@OneToOne(cascade = CascadeType.ALL)

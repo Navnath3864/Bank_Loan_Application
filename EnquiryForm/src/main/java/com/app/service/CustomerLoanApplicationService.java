@@ -22,4 +22,10 @@ public interface CustomerLoanApplicationService {
 	public CustomerLoanApplication updateLoanStatusofCustomerApplication(int id, String loanStatus);
 
 	public List<CustomerLoanApplication> getAllSanctioedData();
+
+
+	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
+			CustomerLoanApplication customerLoanApplication);
+
+
 }

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.exceptions.HandleCustomException;
 import com.app.model.CustomerLoanApplication;
 import com.app.model.EnquiryDetails;
 import com.app.repository.CustomerLoanApplicationRepository;
@@ -59,7 +60,7 @@ public class EnquiryDetailsServiceImpl implements EnquiryDetailsService {
 			System.out.println(enquiryDetails2);
 			return enquiryDetails2;
 		}
-		return null;
+		throw new HandleCustomException("EnquiryDetails for Customer must be required");
 	}
 
     @Override
