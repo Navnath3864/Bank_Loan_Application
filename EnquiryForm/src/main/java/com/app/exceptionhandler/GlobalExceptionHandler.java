@@ -33,5 +33,6 @@ public class GlobalExceptionHandler {
 		exceptionList.add(ex.getMessage());
 		return new ResponseEntity<List<String>>(exceptionList, HttpStatus.BAD_REQUEST);
 		
+
 	}
 }
