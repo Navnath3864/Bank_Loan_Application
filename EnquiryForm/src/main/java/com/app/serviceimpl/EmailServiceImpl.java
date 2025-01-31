@@ -26,11 +26,11 @@ public class EmailServiceImpl implements EmailService {
 	@Value("${spring.mail.username}") private String fromEmail;
 
 	@Override
-	public CustomerLoanApplication sendSanctionLetterMailToCustomer(int customer_ID) {
+	public CustomerLoanApplication sendSanctionLetterMailToCustomer(int customerLoan_ID) {
 
 		MimeMessage mimemessage = sender.createMimeMessage();
 
-		CustomerLoanApplication customerLoanApplication = applicationRepository.findByCustomerLoanID(customer_ID);
+		CustomerLoanApplication customerLoanApplication = applicationRepository.findByCustomerLoanID(customerLoan_ID);
 		byte[] sanctionLetter = customerLoanApplication.getSanctionLetter().getSanctionLetter();
 
 		MimeMessageHelper mimemessageHelper;

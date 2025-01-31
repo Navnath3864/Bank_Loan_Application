@@ -19,9 +19,9 @@ public class EmailController {
 	EmailService  emailService;
 	
 	@GetMapping("/api/sendSantionLetterMail/{customerLoan_ID}")
-	public ResponseEntity<CustomerLoanApplication> sendSanctionLetterMail(@PathVariable int customer_ID)
+	public ResponseEntity<CustomerLoanApplication> sendSanctionLetterMail(@PathVariable int customerLoan_ID)
 	{
-		CustomerLoanApplication customerLoanApplication = emailService.sendSanctionLetterMailToCustomer(customer_ID);
+		CustomerLoanApplication customerLoanApplication = emailService.sendSanctionLetterMailToCustomer(customerLoan_ID);
 		return new ResponseEntity<CustomerLoanApplication>(customerLoanApplication,HttpStatus.OK);
 		
 	}
