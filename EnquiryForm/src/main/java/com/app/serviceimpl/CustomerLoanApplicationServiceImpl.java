@@ -322,15 +322,48 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
 			CustomerLoanApplication customerLoanApplication) {
 		Optional<CustomerLoanApplication> customerLoanapp = customerLoanApplicationRepository.findById(customerLoanId);
-		if(customerLoanapp.isPresent()) {
+		if (customerLoanapp.isPresent()) {
 			customerLoanapp.get().setLoandisbursement(customerLoanApplication.getLoandisbursement());
 			System.out.println(customerLoanapp.get());
 			return customerLoanApplicationRepository.save(customerLoanapp.get());
-			
+
 		}
-		
+
 		return null;
 
+	}
+
+	@Override
+	public AllPersonalDocs updateDocument(int customerid, MultipartFile addressProof, MultipartFile panCard,
+			MultipartFile incomeTax, MultipartFile addharCard, MultipartFile photo, MultipartFile signature,
+			MultipartFile bankCheque, MultipartFile salarySlips) {
+		CustomerLoanApplication application = customerLoanApplicationRepository.findByCustomerLoanID(customerid);
+		 System.out.println("hello");
+			try {
+				application.getAllPersonalDocument().setAddressProof(addressProof.getBytes());
+				application.getAllPersonalDocument().setAddharCard(addharCard.getBytes());
+				application.getAllPersonalDocument().setPanCard(panCard.getBytes());
+				application.getAllPersonalDocument().setIncomeTax(incomeTax.getBytes());
+				application.getAllPersonalDocument().setPhoto(photo.getBytes());
+				application.getAllPersonalDocument().setSignature(signature.getBytes());
+				application.getAllPersonalDocument().setBankCheque(bankCheque.getBytes());
+				application.getAllPersonalDocument().setSalarySlips(salarySlips.getBytes());
+				application.getAllPersonalDocument().setAddharCard(addharCard.getBytes());
+				application.getAllPersonalDocument().setPanCard(panCard.getBytes());
+				application.getAllPersonalDocument().setIncomeTax(incomeTax.getBytes());
+				application.getAllPersonalDocument().setPhoto(photo.getBytes());
+				application.getAllPersonalDocument().setSignature(signature.getBytes());
+				application.getAllPersonalDocument().setBankCheque(bankCheque.getBytes());
+				application.getAllPersonalDocument().setSalarySlips(salarySlips.getBytes());
+				CustomerLoanApplication application2 = customerLoanApplicationRepository.save(application);
+				return application2.getAllPersonalDocument();
+			} catch (IOException e) {
+				e.printStackTrace();
+			
+
+		}
+
+		return null;
 	}
 
 }
