@@ -110,5 +110,10 @@ public class CustomerLoanApplicationController {
 		LOGGER.debug("Customerloanapplication Form updated successfully: {}", application);
 		return new ResponseEntity<CustomerLoanApplication>(application, HttpStatus.ACCEPTED);
 	}
+	@GetMapping("/api/getcustomerloanapplication/{customerLoanID}")
+	public ResponseEntity<CustomerLoanApplication> getCustomerLoanApplication(@PathVariable int customerLoanID){
+		CustomerLoanApplication custLoanApp= customerLoanApplicationService.getCustomerLoanApplication(customerLoanID);
+		return new ResponseEntity<CustomerLoanApplication>(custLoanApp,HttpStatus.OK);
+	}
 	
 }

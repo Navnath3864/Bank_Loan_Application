@@ -334,4 +334,13 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 
 	}
 
+	@Override
+	public CustomerLoanApplication getCustomerLoanApplication(int customerLoanID) {
+		Optional<CustomerLoanApplication> custLoanApp=customerLoanApplicationRepository.findById(customerLoanID);
+		if(custLoanApp.isPresent()) {
+			return custLoanApp.get();
+		}
+		return null;
+	}
+
 }
