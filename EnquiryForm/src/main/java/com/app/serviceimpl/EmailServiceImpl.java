@@ -30,11 +30,11 @@ public class EmailServiceImpl implements EmailService {
 
 
 	@Override
-	public CustomerLoanApplication sendSanctionLetterMailToCustomer(int customer_ID) {
+	public CustomerLoanApplication sendSanctionLetterMailToCustomer(int customerLoan_ID) {
 
 		MimeMessage mimemessage = sender.createMimeMessage();
 
-		CustomerLoanApplication customerLoanApplication = applicationRepository.findByCustomerLoanID(customer_ID);
+		CustomerLoanApplication customerLoanApplication = applicationRepository.findByCustomerLoanID(customerLoan_ID);
 		byte[] sanctionLetter = customerLoanApplication.getSanctionLetter().getSanctionLetter();
 
 		MimeMessageHelper mimemessageHelper;

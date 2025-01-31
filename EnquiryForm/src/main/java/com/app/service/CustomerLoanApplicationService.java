@@ -27,5 +27,7 @@ public interface CustomerLoanApplicationService {
 	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
 			CustomerLoanApplication customerLoanApplication);
 
+	public CustomerLoanApplication getCustomerLoanApplication(int customerLoanID);
+
 
 }

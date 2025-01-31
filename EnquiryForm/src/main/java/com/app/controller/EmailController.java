@@ -25,6 +25,7 @@ public class EmailController {
 	@GetMapping("/api/sendSantionLetterMail/{customerLoan_ID}")
 	public ResponseEntity<CustomerLoanApplication> sendSanctionLetterMail(@PathVariable int customerLoan_ID)
 	{
+
 		LOGGER.info("Received GET request for CustomerLoanApplication Form to send SantionLetter mail with customerLoan_ID:{}"+customerLoan_ID);
 		CustomerLoanApplication customerLoanApplication = emailService.sendSanctionLetterMailToCustomer(customerLoan_ID);
 		LOGGER.debug("Fetch Customerloanapplication Form with Santion Letter successfully: {}", customerLoanApplication);
