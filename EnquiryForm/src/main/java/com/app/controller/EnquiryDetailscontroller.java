@@ -62,7 +62,7 @@ public class EnquiryDetailscontroller {
 	@PutMapping("/api/updatecibil/{customerID}")
 	public ResponseEntity<EnquiryDetails> getDataFromCibilScoreData(@PathVariable int customerID) {
 		LOGGER.info("Received PUT request for Customer with customerId: {}", customerID);
-		String url = "http://localhost:8087/oe/getenquirydata/" + customerID;
+		String url = "http://localhost:8087/oe/getenquirydata/"+ customerID;
 		EnquiryDetails enq = rs.getForObject(url, EnquiryDetails.class);
 		EnquiryDetails eqEnquiryDetails = enquiryDetailsService.updateEnquiryDetails(enq, customerID);
 		LOGGER.debug("Customer CibilScore updated successfully: {}", eqEnquiryDetails);
