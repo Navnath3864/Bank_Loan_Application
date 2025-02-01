@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.model.AllPersonalDocs;
 import com.app.model.CustomerLoanApplication;
 import com.app.service.CustomerLoanApplicationService;
 
@@ -27,7 +28,7 @@ public class CustomerLoanApplicationController {
 
 	@Autowired
 	CustomerLoanApplicationService customerLoanApplicationService;
-	
+
 	@Autowired
 	RestTemplate restTemplate;
 
@@ -92,28 +93,46 @@ public class CustomerLoanApplicationController {
 		LOGGER.debug("Customerloanapplication Form updated successfully: {}", application);
 		return new ResponseEntity<CustomerLoanApplication>(application, HttpStatus.ACCEPTED);
 	}
-	
+
 	@GetMapping("/api/getAllSanctionedData")
-	public ResponseEntity<List<CustomerLoanApplication>> getALlSanctioedData()
-	{
-		 List<CustomerLoanApplication> list = customerLoanApplicationService.getAllSanctioedData();
-		return new  ResponseEntity<List<CustomerLoanApplication>>(list,HttpStatus.OK);
+	public ResponseEntity<List<CustomerLoanApplication>> getALlSanctioedData() {
+		List<CustomerLoanApplication> list = customerLoanApplicationService.getAllSanctioedData();
+		return new ResponseEntity<List<CustomerLoanApplication>>(list, HttpStatus.OK);
 	}
 
-	
+
 	@PutMapping("/api/Loandisbursement/{customerLoanId}")
+
 	public ResponseEntity<CustomerLoanApplication> updateLoandisBursement(@RequestBody CustomerLoanApplication customerLoanApplication, @PathVariable int customerLoanId) {
-		System.out.println(customerLoanId+" --->"+customerLoanApplication.getLoandisbursement());
+		
+		System.out.println(customerLoanId + " --->" + customerLoanApplication.getLoandisbursement());
+
 		LOGGER.info("Received PUT request for CustomerController  with customerLoanID: {}", customerLoanId);
 		CustomerLoanApplication application = customerLoanApplicationService.updateLoandisBursement(customerLoanId,
 				customerLoanApplication);
 		LOGGER.debug("Customerloanapplication Form updated successfully: {}", application);
 		return new ResponseEntity<CustomerLoanApplication>(application, HttpStatus.ACCEPTED);
 	}
+
 	@GetMapping("/api/getcustomerloanapplication/{customerLoanID}")
 	public ResponseEntity<CustomerLoanApplication> getCustomerLoanApplication(@PathVariable int customerLoanID){
 		CustomerLoanApplication custLoanApp= customerLoanApplicationService.getCustomerLoanApplication(customerLoanID);
 		return new ResponseEntity<CustomerLoanApplication>(custLoanApp,HttpStatus.OK);
 	}
 	
+
+
+	@PutMapping("/api/updateDocument/{customerLoanId}")
+	public ResponseEntity<AllPersonalDocs> updateDocument(@PathVariable("customerLoanId") int customerid,
+			@RequestPart("addressProof") MultipartFile addressProof, @RequestPart("panCard") MultipartFile panCard,
+			@RequestPart("incomeTax") MultipartFile incomeTax, @RequestPart("addharCard") MultipartFile addharCard,
+			@RequestPart("photo") MultipartFile photo, @RequestPart("signature") MultipartFile signature,
+			@RequestPart("bankCheque") MultipartFile bankCheque,
+			@RequestPart("salarySlips") MultipartFile salarySlips) {
+
+		AllPersonalDocs allPersonalDocs = customerLoanApplicationService.updateDocument(customerid, addressProof,
+				panCard, incomeTax, addharCard, photo, signature, bankCheque, salarySlips);
+		return new ResponseEntity<AllPersonalDocs>(allPersonalDocs, HttpStatus.ACCEPTED);
+	}
 }
+

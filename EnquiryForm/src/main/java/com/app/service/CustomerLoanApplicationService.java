@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.model.AllPersonalDocs;
 import com.app.model.CustomerLoanApplication;
 
 public interface CustomerLoanApplicationService {
@@ -27,6 +28,13 @@ public interface CustomerLoanApplicationService {
 	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
 			CustomerLoanApplication customerLoanApplication);
 
+
 	public CustomerLoanApplication getCustomerLoanApplication(int customerLoanID);
+	public AllPersonalDocs updateDocument(int customerid, MultipartFile addressProof, MultipartFile panCard,
+			MultipartFile incomeTax, MultipartFile addharCard, MultipartFile photo, MultipartFile signature,
+			MultipartFile bankCheque, MultipartFile salarySlips);
+
+
+	 
 
 }
