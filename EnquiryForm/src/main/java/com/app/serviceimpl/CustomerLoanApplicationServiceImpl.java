@@ -321,6 +321,7 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 	@Override
 	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
 			CustomerLoanApplication customerLoanApplication) {
+		System.out.println("hi");
 		Optional<CustomerLoanApplication> customerLoanapp = customerLoanApplicationRepository.findById(customerLoanId);
 		if (customerLoanapp.isPresent()) {
 			customerLoanapp.get().setLoandisbursement(customerLoanApplication.getLoandisbursement());

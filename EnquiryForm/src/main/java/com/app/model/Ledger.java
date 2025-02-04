@@ -1,6 +1,9 @@
 package com.app.model;
 
+import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
@@ -9,6 +12,7 @@ import lombok.Data;
 public class Ledger {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int ledgerId;
 	private String ledgerCreatedDate;
 	private Double totalLoanAmount;
@@ -19,7 +23,7 @@ public class Ledger {
 	private Double remainingAmount;
 	private String nextEmiDatestart;
 	private String nextEmiDateEnd;
-	private Integer defaulterCount;
+	private int defaulterCount;
 	private String previousEmitStatus;
 	private String currentMonthEmiStatus;
 	private String loanEndDate;
