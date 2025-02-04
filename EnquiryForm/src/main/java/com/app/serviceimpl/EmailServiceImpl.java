@@ -25,8 +25,6 @@ public class EmailServiceImpl implements EmailService {
 	JavaMailSender sender;
 	@Value("${spring.mail.username}") private String fromEmail;
 
-		
-
 	@Override
 	public CustomerLoanApplication sendSanctionLetterMailToCustomer(int customerLoan_ID) {
 

@@ -1,5 +1,7 @@
 package com.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +23,8 @@ public class LedgerController {
 	
 	
 	@PutMapping("/api/saveledgerdata/{customerLoanID}")
-	public ResponseEntity<Ledger> ledgerData(@RequestBody Ledger ledger,@PathVariable int customerLoanID){
-		Ledger ledgerData=ledgerService.saveLedgerData(ledger,customerLoanID);
-		return new ResponseEntity<Ledger>(ledgerData,HttpStatus.ACCEPTED);
+	public ResponseEntity<List<Ledger>> ledgerData(@RequestBody Ledger ledger,@PathVariable int customerLoanID){
+	Ledger ledgerData=ledgerService.saveLedgerData(ledger,customerLoanID);
+		return new ResponseEntity<List<Ledger>>(ledgerData,HttpStatus.ACCEPTED);
 	}
 }

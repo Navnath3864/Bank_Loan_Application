@@ -36,10 +36,14 @@ public class CustomerLoanApplicationController {
 
 	@PostMapping("/api/customerloanapplication/{id}")
 	public ResponseEntity<CustomerLoanApplication> saveDetails(@RequestPart("data") String customerLoanApplication,
-			@RequestPart("addressProof") MultipartFile addressProof, @RequestPart("panCard") MultipartFile panCard,
-			@RequestPart("incomeTax") MultipartFile incomeTax, @RequestPart("addharCard") MultipartFile addharCard,
-			@RequestPart("photo") MultipartFile photo, @RequestPart("signature") MultipartFile signature,
-			@RequestPart("bankCheque") MultipartFile bankCheque, @RequestPart("salarySlips") MultipartFile salarySlips,
+			@RequestPart("addressProof") MultipartFile addressProof,
+			@RequestPart("panCard") MultipartFile panCard,
+			@RequestPart("incomeTax") MultipartFile incomeTax, 
+			@RequestPart("addharCard") MultipartFile addharCard,
+			@RequestPart("photo") MultipartFile photo,
+			@RequestPart("signature") MultipartFile signature,
+			@RequestPart("bankCheque") MultipartFile bankCheque,
+			@RequestPart("salarySlips") MultipartFile salarySlips,
 			@PathVariable int id) {
 		LOGGER.info("Received POST request to create Customerloanapplication Form");
 		CustomerLoanApplication details = customerLoanApplicationService.saveDetails(customerLoanApplication, id,

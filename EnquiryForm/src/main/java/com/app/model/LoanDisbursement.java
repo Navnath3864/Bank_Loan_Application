@@ -11,7 +11,7 @@ import lombok.Data;
 public class LoanDisbursement {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int agreementid;
 	private int loanNo;
 	private String agreementDate;

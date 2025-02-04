@@ -19,7 +19,7 @@ public class Ledger {
 	private Double remainingAmount;
 	private String nextEmiDatestart;
 	private String nextEmiDateEnd;
-	private Integer defaulterCount;
+	private int defaulterCount;
 	private String previousEmitStatus;
 	private String currentMonthEmiStatus;
 	private String loanEndDate;

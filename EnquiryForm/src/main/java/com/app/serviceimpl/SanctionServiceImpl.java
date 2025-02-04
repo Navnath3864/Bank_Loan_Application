@@ -78,7 +78,7 @@ public class SanctionServiceImpl implements SanctionService {
 			try {
 				img = Image.getInstance("C://Users//DELL-PC//Pictures//Saved Pictures//download.jpg");
 
-				img = Image.getInstance("C:/Users/lenovo/Desktop/neoli.jpg");
+		
 
 				img.scalePercent(50, 50);
 				img.setAlignment(Element.ALIGN_RIGHT);
