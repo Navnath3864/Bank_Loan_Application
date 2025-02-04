@@ -27,4 +27,11 @@ public class LedgerController {
 		List<Ledger> ledgerData=ledgerService.saveLedgerData(ledger,customerLoanID);
 		return new ResponseEntity<List<Ledger>>(ledgerData,HttpStatus.ACCEPTED);
 	}
+	
+	@PutMapping("/api/updateledgerdata/{id}/{option}")
+	public ResponseEntity<Ledger> saveledger(@PathVariable("id") int id,@PathVariable("option") String option)
+	{
+		Ledger ledger =ledgerService.updateledger(id,option);
+		return new ResponseEntity<Ledger>(ledger,HttpStatus.ACCEPTED);
+	}
 }
