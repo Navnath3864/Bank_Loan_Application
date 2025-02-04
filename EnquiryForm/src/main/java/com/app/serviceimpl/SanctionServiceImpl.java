@@ -152,7 +152,8 @@ public class SanctionServiceImpl implements SanctionService {
 			emailServiceImpl.sendSanctionLetterMailToCustomer(customerLoanID);
 			return applicationRepository.save(customerLoanApplication);
 		} else {
-			throw new HandleCustomException("CustomerLoanApplication data must be required");
+			return null;
+			//throw new HandleCustomException("CustomerLoanApplication data must be required");
 		}
 	}
 

@@ -67,7 +67,7 @@ public class EmailServiceImpl implements EmailService {
 			e.printStackTrace();
 		}
 
-		throw new HandleCustomException("CustomerLoanId is Invalid");
+		return null;
 	}
 
 }

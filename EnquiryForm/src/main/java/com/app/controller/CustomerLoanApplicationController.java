@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.model.AllPersonalDocs;
 import com.app.model.CustomerLoanApplication;
 import com.app.service.CustomerLoanApplicationService;
 
@@ -114,9 +115,23 @@ public class CustomerLoanApplicationController {
 	}
 	@GetMapping("/api/getcustomerloanapplication/{customerLoanID}")
 	public ResponseEntity<CustomerLoanApplication> getCustomerLoanApplication(@PathVariable int customerLoanID){
+		LOGGER.info("Received GET request for Customerloanapplication Form with customerLoanID: {}", customerLoanID);
 		CustomerLoanApplication custLoanApp= customerLoanApplicationService.getCustomerLoanApplication(customerLoanID);
+		LOGGER.debug("Fetched {} Customerloanapplication Form successfully", custLoanApp);
 		return new ResponseEntity<CustomerLoanApplication>(custLoanApp,HttpStatus.OK);
 	}
-	
+	@PutMapping("/api/updateDocument/{customerLoanId}")
+	public ResponseEntity<AllPersonalDocs> updateDocument(@PathVariable("customerLoanId") int customerid,
+			@RequestPart("addressProof") MultipartFile addressProof, @RequestPart("panCard") MultipartFile panCard,
+			@RequestPart("incomeTax") MultipartFile incomeTax, @RequestPart("addharCard") MultipartFile addharCard,
+			@RequestPart("photo") MultipartFile photo, @RequestPart("signature") MultipartFile signature,
+			@RequestPart("bankCheque") MultipartFile bankCheque,
+			@RequestPart("salarySlips") MultipartFile salarySlips) {
+		LOGGER.info("Received PUT request for AllPersonalDocs  with customerLoanID: {}", customerid);
+		AllPersonalDocs allPersonalDocs = customerLoanApplicationService.updateDocument(customerid, addressProof,
+				panCard, incomeTax, addharCard, photo, signature, bankCheque, salarySlips);
+		LOGGER.debug("AllPersonalDocs updated successfully: {}", allPersonalDocs);
+		return new ResponseEntity<AllPersonalDocs>(allPersonalDocs, HttpStatus.ACCEPTED);
+	}
     
 }

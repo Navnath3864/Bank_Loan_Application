@@ -1,5 +1,7 @@
 package com.app.model;
 
+import java.util.List;
+
 import com.app.model.CibilScoreData;
 
 import jakarta.persistence.CascadeType;
@@ -63,8 +65,8 @@ public class CustomerLoanApplication {
 	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement loandisbursement;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private Ledger ledger;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Ledger> ledger;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private SanctionLetter sanctionLetter;
