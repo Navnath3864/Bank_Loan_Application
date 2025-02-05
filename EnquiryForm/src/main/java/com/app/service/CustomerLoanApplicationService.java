@@ -25,6 +25,7 @@ public interface CustomerLoanApplicationService {
 
 	public List<CustomerLoanApplication> getAllSanctioedData();
 
+
 	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
 			CustomerLoanApplication customerLoanApplication);
 
@@ -36,5 +37,11 @@ public interface CustomerLoanApplicationService {
 
 
 	 
+
+	public AllPersonalDocs updateDocument(int customerid, MultipartFile addressProof, MultipartFile panCard,
+			MultipartFile incomeTax, MultipartFile addharCard, MultipartFile photo, MultipartFile signature,
+			MultipartFile bankCheque, MultipartFile salarySlips);
+
+
 
 }

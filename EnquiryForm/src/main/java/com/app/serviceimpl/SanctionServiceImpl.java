@@ -20,6 +20,7 @@ import com.lowagie.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.exceptions.HandleCustomException;
 import com.app.model.CustomerLoanApplication;
 import com.app.model.SanctionLetter;
 import com.app.repository.CustomerLoanApplicationRepository;
@@ -77,10 +78,7 @@ public class SanctionServiceImpl implements SanctionService {
 			Image img = null;
 			try {
 				img = Image.getInstance("C://Users//DELL-PC//Pictures//Saved Pictures//download.jpg");
-
-		
-
-				img.scalePercent(50, 50);
+         		img.scalePercent(50, 50);
 				img.setAlignment(Element.ALIGN_RIGHT);
 				document.add(img);
 
@@ -151,6 +149,7 @@ public class SanctionServiceImpl implements SanctionService {
 			return applicationRepository.save(customerLoanApplication);
 		} else {
 			return null;
+			//throw new HandleCustomException("CustomerLoanApplication data must be required");
 		}
 	}
 

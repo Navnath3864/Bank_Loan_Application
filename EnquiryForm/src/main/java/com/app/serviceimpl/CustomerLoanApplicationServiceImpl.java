@@ -38,6 +38,7 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 		CustomerLoanApplication customerLoanApplication = null;
 
 		EnquiryDetails details = enquiryDetailsRepository.findByCustomerID(id);
+		
 		ObjectMapper objectMapper = new ObjectMapper();
 
 		try {
@@ -302,7 +303,6 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 		return customerLoanApplicationRepository.findAllByLoanStatus(status);
 	}
 
-
 	@Override
 	public CustomerLoanApplication updateLoanStatusofCustomerApplication(int id, String loanStatus) {
 		CustomerLoanApplication customerLoanApplication = customerLoanApplicationRepository.findByCustomerLoanID(id);
@@ -323,14 +323,14 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
 			CustomerLoanApplication customerLoanApplication) {
 		Optional<CustomerLoanApplication> customerLoanapp = customerLoanApplicationRepository.findById(customerLoanId);
-		if (customerLoanapp.isPresent()) {
+		if(customerLoanapp.isPresent()) {
 			customerLoanapp.get().setLoandisbursement(customerLoanApplication.getLoandisbursement());
 			System.out.println(customerLoanapp.get());
 			return customerLoanApplicationRepository.save(customerLoanapp.get());
-
+			
 		}
-
-		return null;
+		
+		throw new HandleCustomException("CustomerLoanId is Invalid");
 
 	}
 
@@ -340,8 +340,10 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 		if(custLoanApp.isPresent()) {
 			return custLoanApp.get();
 		}
-		return null;
+		throw new HandleCustomException("CustomerLoanId is Invalid");
 	}
+
+	@Override
 	public AllPersonalDocs updateDocument(int customerid, MultipartFile addressProof, MultipartFile panCard,
 			MultipartFile incomeTax, MultipartFile addharCard, MultipartFile photo, MultipartFile signature,
 			MultipartFile bankCheque, MultipartFile salarySlips) {

@@ -1,5 +1,10 @@
 package com.app.controller;
 
+
+
+
+
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -36,14 +41,10 @@ public class CustomerLoanApplicationController {
 
 	@PostMapping("/api/customerloanapplication/{id}")
 	public ResponseEntity<CustomerLoanApplication> saveDetails(@RequestPart("data") String customerLoanApplication,
-			@RequestPart("addressProof") MultipartFile addressProof,
-			@RequestPart("panCard") MultipartFile panCard,
-			@RequestPart("incomeTax") MultipartFile incomeTax, 
-			@RequestPart("addharCard") MultipartFile addharCard,
-			@RequestPart("photo") MultipartFile photo,
-			@RequestPart("signature") MultipartFile signature,
-			@RequestPart("bankCheque") MultipartFile bankCheque,
-			@RequestPart("salarySlips") MultipartFile salarySlips,
+			@RequestPart("addressProof") MultipartFile addressProof, @RequestPart("panCard") MultipartFile panCard,
+			@RequestPart("incomeTax") MultipartFile incomeTax, @RequestPart("addharCard") MultipartFile addharCard,
+			@RequestPart("photo") MultipartFile photo, @RequestPart("signature") MultipartFile signature,
+			@RequestPart("bankCheque") MultipartFile bankCheque, @RequestPart("salarySlips") MultipartFile salarySlips,
 			@PathVariable int id) {
 		LOGGER.info("Received POST request to create Customerloanapplication Form");
 		CustomerLoanApplication details = customerLoanApplicationService.saveDetails(customerLoanApplication, id,
@@ -54,12 +55,12 @@ public class CustomerLoanApplicationController {
 		return new ResponseEntity<CustomerLoanApplication>(details, HttpStatus.CREATED);
 	}
 
-	@GetMapping("/api/getAllCutomerApplicationData")
+	@GetMapping("/api/getAllCustomerApplicationData")
 	public ResponseEntity<List<CustomerLoanApplication>> getAllCustomerApplicationData() {
-		LOGGER.info("Received GET request to fetch all Customerloanapplication Form");
-		List<CustomerLoanApplication> applications = customerLoanApplicationService.getAllCustomerApplicationData();
-		LOGGER.debug("Fetched {} Customerloanapplication Form successfully", applications.size());
-		return new ResponseEntity<List<CustomerLoanApplication>>(applications, HttpStatus.OK);
+	    LOGGER.info("Received GET request to fetch all CustomerLoanApplication Forms");
+	    List<CustomerLoanApplication> applications = customerLoanApplicationService.getAllCustomerApplicationData();
+	    LOGGER.debug("Fetched {} CustomerLoanApplication Forms successfully", applications.size());
+	    return new ResponseEntity<List<CustomerLoanApplication>>(applications, HttpStatus.OK); 
 	}
 
 	@PutMapping("/api/updateLoanstatus/{id}")
@@ -104,26 +105,16 @@ public class CustomerLoanApplicationController {
 		return new ResponseEntity<List<CustomerLoanApplication>>(list, HttpStatus.OK);
 	}
 
-
 	@PutMapping("/api/Loandisbursement/{customerLoanId}")
-
-	public ResponseEntity<CustomerLoanApplication> updateLoandisBursement(@RequestBody CustomerLoanApplication customerLoanApplication, @PathVariable int customerLoanId) {
-		
+	public ResponseEntity<CustomerLoanApplication> updateLoandisBursement(
+			@RequestBody CustomerLoanApplication customerLoanApplication, @PathVariable int customerLoanId) {
 		System.out.println(customerLoanId + " --->" + customerLoanApplication.getLoandisbursement());
-
 		LOGGER.info("Received PUT request for CustomerController  with customerLoanID: {}", customerLoanId);
 		CustomerLoanApplication application = customerLoanApplicationService.updateLoandisBursement(customerLoanId,
 				customerLoanApplication);
 		LOGGER.debug("Customerloanapplication Form updated successfully: {}", application);
 		return new ResponseEntity<CustomerLoanApplication>(application, HttpStatus.ACCEPTED);
 	}
-
-	@GetMapping("/api/getcustomerloanapplication/{customerLoanID}")
-	public ResponseEntity<CustomerLoanApplication> getCustomerLoanApplication(@PathVariable int customerLoanID){
-		CustomerLoanApplication custLoanApp= customerLoanApplicationService.getCustomerLoanApplication(customerLoanID);
-		return new ResponseEntity<CustomerLoanApplication>(custLoanApp,HttpStatus.OK);
-	}
-	
 
 
 	@PutMapping("/api/updateDocument/{customerLoanId}")
@@ -138,5 +129,11 @@ public class CustomerLoanApplicationController {
 				panCard, incomeTax, addharCard, photo, signature, bankCheque, salarySlips);
 		return new ResponseEntity<AllPersonalDocs>(allPersonalDocs, HttpStatus.ACCEPTED);
 	}
-}
 
+	@GetMapping("/api/getcustomerloanapplication/{customerLoanID}")
+	public ResponseEntity<CustomerLoanApplication> getCustomerLoanApplication(@PathVariable int customerLoanID){
+		CustomerLoanApplication custLoanApp= customerLoanApplicationService.getCustomerLoanApplication(customerLoanID);
+		return new ResponseEntity<CustomerLoanApplication>(custLoanApp,HttpStatus.OK);
+	}
+	
+}

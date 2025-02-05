@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 
+import com.app.exceptions.HandleCustomException;
 import com.app.model.CustomerLoanApplication;
 import com.app.repository.CustomerLoanApplicationRepository;
 import com.app.service.EmailService;
@@ -23,7 +24,10 @@ public class EmailServiceImpl implements EmailService {
 
 	@Autowired
 	JavaMailSender sender;
-	@Value("${spring.mail.username}") private String fromEmail;
+	
+     @Value("${spring.mail.username}") 
+     private String fromEmail;
+
 
 	@Override
 	public CustomerLoanApplication sendSanctionLetterMailToCustomer(int customerLoan_ID) {
@@ -37,7 +41,12 @@ public class EmailServiceImpl implements EmailService {
 		try {
 			mimemessageHelper = new MimeMessageHelper(mimemessage, true);
 			mimemessageHelper.setFrom(fromEmail);
+
+			//mimemessageHelper.setTo(customerLoanApplication.getCustomerEmail());
+			mimemessageHelper.setTo("juheeupadhye13@gmail.com");
+
 			mimemessageHelper.setTo(customerLoanApplication.getCustomerEmail());
+
 			mimemessageHelper.setSubject("Happy Finance Ltd. Sanction Letter");
 			String text = "Dear " + customerLoanApplication.getCustomerName() + ",\n" + "\n"
 					+ "This letter is to inform you that we have reviewed your request for a credit loan . We are pleased to offer you a credit loan of "

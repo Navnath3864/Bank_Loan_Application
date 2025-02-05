@@ -1,5 +1,7 @@
 package com.app.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -24,11 +26,14 @@ public class SanctionController {
 	@Autowired
 	SanctionService sanctionService;
 
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(EnquiryDetailscontroller.class);
+
 	@PutMapping("/api/genratePdf/{customerLoanID}")
 	public ResponseEntity<CustomerLoanApplication> sanctionLetter(@PathVariable int customerLoanID,@RequestBody SanctionLetter letter  )
 	{
+		LOGGER.info("Received PUT request for CustomerLoanApplication Form to generate pdf of SantionedLetter  with customerLoanID: {}", customerLoanID);
 		CustomerLoanApplication application= sanctionService.sanctionLetter(customerLoanID,letter);
+		LOGGER.debug("Customerloanapplication Form updated successfully by generating pdf of SantionedLetter: {}", application);
 		return new  ResponseEntity<CustomerLoanApplication>(application,HttpStatus.ACCEPTED);
 	}
 }

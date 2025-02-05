@@ -24,3 +24,4 @@ public class PermanentAddress {
 	private String streetName;
 
 }
+
