@@ -1,10 +1,5 @@
 package com.app.controller;
 
-
-
-
-
-
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -33,7 +28,7 @@ public class CustomerLoanApplicationController {
 
 	@Autowired
 	CustomerLoanApplicationService customerLoanApplicationService;
-
+	
 	@Autowired
 	RestTemplate restTemplate;
 
@@ -55,12 +50,12 @@ public class CustomerLoanApplicationController {
 		return new ResponseEntity<CustomerLoanApplication>(details, HttpStatus.CREATED);
 	}
 
-	@GetMapping("/api/getAllCustomerApplicationData")
+	@GetMapping("/api/getAllCutomerApplicationData")
 	public ResponseEntity<List<CustomerLoanApplication>> getAllCustomerApplicationData() {
-	    LOGGER.info("Received GET request to fetch all CustomerLoanApplication Forms");
-	    List<CustomerLoanApplication> applications = customerLoanApplicationService.getAllCustomerApplicationData();
-	    LOGGER.debug("Fetched {} CustomerLoanApplication Forms successfully", applications.size());
-	    return new ResponseEntity<List<CustomerLoanApplication>>(applications, HttpStatus.OK); 
+		LOGGER.info("Received GET request to fetch all Customerloanapplication Form");
+		List<CustomerLoanApplication> applications = customerLoanApplicationService.getAllCustomerApplicationData();
+		LOGGER.debug("Fetched {} Customerloanapplication Form successfully", applications.size());
+		return new ResponseEntity<List<CustomerLoanApplication>>(applications, HttpStatus.OK);
 	}
 
 	@PutMapping("/api/updateLoanstatus/{id}")
@@ -88,35 +83,43 @@ public class CustomerLoanApplicationController {
 		LOGGER.debug("Fetched {} Customerloanapplication Form successfully whose loanStatus is Verified", list.size());
 		return new ResponseEntity<List<CustomerLoanApplication>>(list, HttpStatus.OK);
 	}
-
+	
 	@PutMapping("/api/updateLoanStatusofCustomerApplication/{id}")
 	public ResponseEntity<CustomerLoanApplication> updateLoanStatusofCustomerApplication(
 			@RequestBody CustomerLoanApplication customerLoanApplication, @PathVariable int id) {
-		LOGGER.info("Received PUT request for CustomerController  with customerLoanID: {}", id);
+		LOGGER.info("Received PUT request for CustomerLoanApplication Form  with customerLoanID: {}", id);
 		CustomerLoanApplication application = customerLoanApplicationService.updateLoanStatusofCustomerApplication(id,
 				customerLoanApplication.getLoanStatus());
 		LOGGER.debug("Customerloanapplication Form updated successfully: {}", application);
 		return new ResponseEntity<CustomerLoanApplication>(application, HttpStatus.ACCEPTED);
 	}
-
+	
 	@GetMapping("/api/getAllSanctionedData")
-	public ResponseEntity<List<CustomerLoanApplication>> getALlSanctioedData() {
+	public ResponseEntity<List<CustomerLoanApplication>> getALlSanctioedData()
+	{
+		LOGGER.info("Received GET request to fetch all Customerloanapplication Form whose loanStatus is Santioned");
 		List<CustomerLoanApplication> list = customerLoanApplicationService.getAllSanctioedData();
-		return new ResponseEntity<List<CustomerLoanApplication>>(list, HttpStatus.OK);
+		LOGGER.debug("Fetched {} Customerloanapplication Form successfully whose loanStatus is Santioned", list.size());
+		return new  ResponseEntity<List<CustomerLoanApplication>>(list,HttpStatus.OK);
 	}
 
 	@PutMapping("/api/Loandisbursement/{customerLoanId}")
 	public ResponseEntity<CustomerLoanApplication> updateLoandisBursement(
 			@RequestBody CustomerLoanApplication customerLoanApplication, @PathVariable int customerLoanId) {
-		System.out.println(customerLoanId + " --->" + customerLoanApplication.getLoandisbursement());
-		LOGGER.info("Received PUT request for CustomerController  with customerLoanID: {}", customerLoanId);
+		System.out.println(customerLoanId+" --->"+customerLoanApplication.getLoandisbursement());
+		LOGGER.info("Received PUT request for CustomerLoanApplication  with customerLoanID: {}", customerLoanId);
 		CustomerLoanApplication application = customerLoanApplicationService.updateLoandisBursement(customerLoanId,
 				customerLoanApplication);
 		LOGGER.debug("Customerloanapplication Form updated successfully: {}", application);
 		return new ResponseEntity<CustomerLoanApplication>(application, HttpStatus.ACCEPTED);
 	}
-
-
+	@GetMapping("/api/getcustomerloanapplication/{customerLoanID}")
+	public ResponseEntity<CustomerLoanApplication> getCustomerLoanApplication(@PathVariable int customerLoanID){
+		LOGGER.info("Received GET request for Customerloanapplication Form with customerLoanID: {}", customerLoanID);
+		CustomerLoanApplication custLoanApp= customerLoanApplicationService.getCustomerLoanApplication(customerLoanID);
+		LOGGER.debug("Fetched {} Customerloanapplication Form successfully", custLoanApp);
+		return new ResponseEntity<CustomerLoanApplication>(custLoanApp,HttpStatus.OK);
+	}
 	@PutMapping("/api/updateDocument/{customerLoanId}")
 	public ResponseEntity<AllPersonalDocs> updateDocument(@PathVariable("customerLoanId") int customerid,
 			@RequestPart("addressProof") MultipartFile addressProof, @RequestPart("panCard") MultipartFile panCard,
@@ -124,16 +127,11 @@ public class CustomerLoanApplicationController {
 			@RequestPart("photo") MultipartFile photo, @RequestPart("signature") MultipartFile signature,
 			@RequestPart("bankCheque") MultipartFile bankCheque,
 			@RequestPart("salarySlips") MultipartFile salarySlips) {
-
+		LOGGER.info("Received PUT request for AllPersonalDocs  with customerLoanID: {}", customerid);
 		AllPersonalDocs allPersonalDocs = customerLoanApplicationService.updateDocument(customerid, addressProof,
 				panCard, incomeTax, addharCard, photo, signature, bankCheque, salarySlips);
+		LOGGER.debug("AllPersonalDocs updated successfully: {}", allPersonalDocs);
 		return new ResponseEntity<AllPersonalDocs>(allPersonalDocs, HttpStatus.ACCEPTED);
 	}
-
-	@GetMapping("/api/getcustomerloanapplication/{customerLoanID}")
-	public ResponseEntity<CustomerLoanApplication> getCustomerLoanApplication(@PathVariable int customerLoanID){
-		CustomerLoanApplication custLoanApp= customerLoanApplicationService.getCustomerLoanApplication(customerLoanID);
-		return new ResponseEntity<CustomerLoanApplication>(custLoanApp,HttpStatus.OK);
-	}
-	
+    
 }

@@ -19,7 +19,6 @@ public interface CustomerLoanApplicationService {
 	public List<CustomerLoanApplication> getAllLoansubmited();
 
 	public List<CustomerLoanApplication> getAllVerifiedData();
-	
 
 	public CustomerLoanApplication updateLoanStatusofCustomerApplication(int id, String loanStatus);
 
@@ -29,14 +28,7 @@ public interface CustomerLoanApplicationService {
 	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
 			CustomerLoanApplication customerLoanApplication);
 
-
 	public CustomerLoanApplication getCustomerLoanApplication(int customerLoanID);
-	public AllPersonalDocs updateDocument(int customerid, MultipartFile addressProof, MultipartFile panCard,
-			MultipartFile incomeTax, MultipartFile addharCard, MultipartFile photo, MultipartFile signature,
-			MultipartFile bankCheque, MultipartFile salarySlips);
-
-
-	 
 
 	public AllPersonalDocs updateDocument(int customerid, MultipartFile addressProof, MultipartFile panCard,
 			MultipartFile incomeTax, MultipartFile addharCard, MultipartFile photo, MultipartFile signature,

@@ -120,11 +120,6 @@
 		</dependency>
 		
 		
-		<dependency>
-			<groupId>com.app.accounthead</groupId>
-			<artifactId>AccountHead</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 </dependencies>
  
 	<build>

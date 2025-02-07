@@ -303,6 +303,8 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 		return customerLoanApplicationRepository.findAllByLoanStatus(status);
 	}
 
+	
+
 	@Override
 	public CustomerLoanApplication updateLoanStatusofCustomerApplication(int id, String loanStatus) {
 		CustomerLoanApplication customerLoanApplication = customerLoanApplicationRepository.findByCustomerLoanID(id);
