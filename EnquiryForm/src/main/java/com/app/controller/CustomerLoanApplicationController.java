@@ -120,6 +120,7 @@ public class CustomerLoanApplicationController {
 		LOGGER.debug("Fetched {} Customerloanapplication Form successfully", custLoanApp);
 		return new ResponseEntity<CustomerLoanApplication>(custLoanApp,HttpStatus.OK);
 	}
+
 	@PutMapping("/api/updateDocument/{customerLoanId}")
 	public ResponseEntity<AllPersonalDocs> updateDocument(@PathVariable("customerLoanId") int customerid,
 			@RequestPart("addressProof") MultipartFile addressProof, @RequestPart("panCard") MultipartFile panCard,
@@ -133,5 +134,5 @@ public class CustomerLoanApplicationController {
 		LOGGER.debug("AllPersonalDocs updated successfully: {}", allPersonalDocs);
 		return new ResponseEntity<AllPersonalDocs>(allPersonalDocs, HttpStatus.ACCEPTED);
 	}
-    
+
 }

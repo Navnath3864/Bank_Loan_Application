@@ -4,11 +4,13 @@ import java.util.List;
 
 import com.app.model.CibilScoreData;
 
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.Valid;
@@ -65,9 +67,9 @@ public class CustomerLoanApplication {
 	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement loandisbursement;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Ledger> ledger;
 
+	@OneToMany
+	private List<Ledger> ledger;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private SanctionLetter sanctionLetter;

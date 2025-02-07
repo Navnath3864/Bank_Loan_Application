@@ -324,6 +324,7 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 	@Override
 	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
 			CustomerLoanApplication customerLoanApplication) {
+		System.out.println("hi");
 		Optional<CustomerLoanApplication> customerLoanapp = customerLoanApplicationRepository.findById(customerLoanId);
 		if(customerLoanapp.isPresent()) {
 			customerLoanapp.get().setLoandisbursement(customerLoanApplication.getLoandisbursement());
@@ -336,16 +337,9 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 
 	}
 
+	
 	@Override
-	public CustomerLoanApplication getCustomerLoanApplication(int customerLoanID) {
-		Optional<CustomerLoanApplication> custLoanApp=customerLoanApplicationRepository.findById(customerLoanID);
-		if(custLoanApp.isPresent()) {
-			return custLoanApp.get();
-		}
-		throw new HandleCustomException("CustomerLoanId is Invalid");
-	}
 
-	@Override
 	public AllPersonalDocs updateDocument(int customerid, MultipartFile addressProof, MultipartFile panCard,
 			MultipartFile incomeTax, MultipartFile addharCard, MultipartFile photo, MultipartFile signature,
 			MultipartFile bankCheque, MultipartFile salarySlips) {
@@ -372,9 +366,15 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 			} catch (IOException e) {
 				e.printStackTrace();
 			
-
+			}
+			return null;
 		}
 
+	public CustomerLoanApplication getCustomerLoanApplication(int customerLoanID) {
+		Optional<CustomerLoanApplication> custLoanApp=customerLoanApplicationRepository.findById(customerLoanID);
+		if(custLoanApp.isPresent()) {
+			return custLoanApp.get();
+		}
 		return null;
 	}
 
