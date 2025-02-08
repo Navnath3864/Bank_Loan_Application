@@ -15,7 +15,7 @@ import lombok.Data;
 public class DependentInfo {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int dependentInfoId;
 
 	private int noOfFamilyMember;

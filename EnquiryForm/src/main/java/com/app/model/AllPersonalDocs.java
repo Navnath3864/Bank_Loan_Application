@@ -15,7 +15,7 @@ public class AllPersonalDocs {
 
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int documentID ;
 	
 	@Lob

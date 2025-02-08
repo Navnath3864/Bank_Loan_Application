@@ -14,7 +14,7 @@ import lombok.Data;
 public class CustomerAddress {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int customerAddressId;
 
 	@OneToOne(cascade = CascadeType.ALL)

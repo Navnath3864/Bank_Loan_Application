@@ -19,7 +19,7 @@ import lombok.Data;
 @Data
 public class EnquiryDetails {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int customerID;
 	
 	@NotBlank(message = "First Name is required")

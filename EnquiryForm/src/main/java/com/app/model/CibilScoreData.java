@@ -11,7 +11,7 @@ import lombok.Data;
 public class CibilScoreData {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int cibilId;
 	private int cibilScore;
 	private String cibilScoreDateTime;

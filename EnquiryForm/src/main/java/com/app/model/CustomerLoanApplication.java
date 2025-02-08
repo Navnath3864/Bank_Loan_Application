@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.Valid;
@@ -18,7 +17,7 @@ import lombok.Data;
 public class CustomerLoanApplication {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int customerLoanID;
 
 	private String customerName;
@@ -63,16 +62,16 @@ public class CustomerLoanApplication {
 	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement loandisbursement;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement loanDisbursement;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Ledger> ledger;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private SanctionLetter sanctionLetter;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerVerification customerVerification;
 
 }
