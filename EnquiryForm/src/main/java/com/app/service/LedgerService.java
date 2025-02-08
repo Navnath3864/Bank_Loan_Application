@@ -8,6 +8,6 @@ public interface LedgerService {
 
 	List<Ledger> saveLedgerData(Ledger ledger,int customerLoanID);
 
-	Ledger updateledger(int id, String option);
+	Ledger updateledger(int id, String option,int customer_Id);
 	
 }
