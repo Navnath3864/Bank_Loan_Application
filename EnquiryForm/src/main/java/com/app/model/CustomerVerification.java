@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 public class CustomerVerification {
 @Id
-@GeneratedValue(strategy=GenerationType.AUTO)
+@GeneratedValue(strategy=GenerationType.IDENTITY)
 private int verificationID;
 private Date verificationDate;
 private String  status;

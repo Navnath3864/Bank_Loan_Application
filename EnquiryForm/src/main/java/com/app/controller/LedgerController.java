@@ -1,8 +1,7 @@
 package com.app.controller;
 
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,21 +21,17 @@ public class LedgerController {
 	@Autowired
 	LedgerService ledgerService ;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(EnquiryDetailscontroller.class);
-
 	
 	@PutMapping("/api/saveledgerdata/{customerLoanID}")
 	public ResponseEntity<List<Ledger>> ledgerData(@RequestBody Ledger ledger,@PathVariable int customerLoanID){
-		LOGGER.info("Received PUT request for Ledger with customerLoanID: {}", customerLoanID);
 		List<Ledger> ledgerData=ledgerService.saveLedgerData(ledger,customerLoanID);
-		LOGGER.debug("Ledger updated successfully: {}", ledgerData);
 		return new ResponseEntity<List<Ledger>>(ledgerData,HttpStatus.ACCEPTED);
 	}
 	
 	@PutMapping("/api/updateledgerdata/{id}/{option}")
 	public ResponseEntity<Ledger> saveledger(@PathVariable("id") int id,@PathVariable("option") String option)
 	{
-		Ledger ledger =ledgerService.updateledger(id,option);
+		Ledger ledger =ledgerService.updateledger(id,option,id);
 		return new ResponseEntity<Ledger>(ledger,HttpStatus.ACCEPTED);
 	}
 }

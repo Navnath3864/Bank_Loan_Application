@@ -2,10 +2,12 @@ package com.app.serviceimpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
 import com.app.exceptions.HandleCustomException;
 import com.app.model.CustomerLoanApplication;
+import com.app.model.Ledger;
 import com.app.repository.CustomerLoanApplicationRepository;
 import com.app.service.EmailService;
 
@@ -68,6 +70,19 @@ public class EmailServiceImpl implements EmailService {
 		}
 
 		return null;
+	}
+
+
+	@Override
+	public void sentLegderStatusToCustomerMail(int customerloadId, Ledger ledger  ) {
+		CustomerLoanApplication application = applicationRepository.findByCustomerLoanID(customerloadId);
+			SimpleMailMessage simple = new SimpleMailMessage();
+			simple.setTo(application.getCustomerEmail());
+			simple.setFrom(fromEmail);
+			simple.setText("Amount Paid Till Date: "+ledger.getAmountPaidtillDate()+"\n"+"RemainingAmount: "+ledger.getRemainingAmount());
+			simple.setSubject("Ledger Deatils");
+			
+			sender.send(simple);		
 	}
 
 }
