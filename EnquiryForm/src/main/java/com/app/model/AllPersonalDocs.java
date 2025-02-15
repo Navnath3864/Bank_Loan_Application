@@ -1,7 +1,6 @@
 package com.app.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
+ 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +15,7 @@ public class AllPersonalDocs {
 
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int documentID ;
 	
 	@Lob

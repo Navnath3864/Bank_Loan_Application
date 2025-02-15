@@ -324,19 +324,22 @@ public class CustomerLoanApplicationServiceImpl implements CustomerLoanApplicati
 	@Override
 	public CustomerLoanApplication updateLoandisBursement(int customerLoanId,
 			CustomerLoanApplication customerLoanApplication) {
+		System.out.println("hi");
 		Optional<CustomerLoanApplication> customerLoanapp = customerLoanApplicationRepository.findById(customerLoanId);
-		if(customerLoanapp.isPresent()) {
+		if (customerLoanapp.isPresent()) {
 			customerLoanapp.get().setLoandisbursement(customerLoanApplication.getLoandisbursement());
 			System.out.println(customerLoanapp.get());
 			return customerLoanApplicationRepository.save(customerLoanapp.get());
-			
+
 		}
-		
+
 		throw new HandleCustomException("CustomerLoanId is Invalid");
+
 
 	}
 
-	@Override
+	
+
 	public CustomerLoanApplication getCustomerLoanApplication(int customerLoanID) {
 		Optional<CustomerLoanApplication> custLoanApp=customerLoanApplicationRepository.findById(customerLoanID);
 		if(custLoanApp.isPresent()) {

@@ -28,7 +28,7 @@ public class CustomerLoanApplicationController {
 
 	@Autowired
 	CustomerLoanApplicationService customerLoanApplicationService;
-	
+
 	@Autowired
 	RestTemplate restTemplate;
 
@@ -83,7 +83,7 @@ public class CustomerLoanApplicationController {
 		LOGGER.debug("Fetched {} Customerloanapplication Form successfully whose loanStatus is Verified", list.size());
 		return new ResponseEntity<List<CustomerLoanApplication>>(list, HttpStatus.OK);
 	}
-	
+
 	@PutMapping("/api/updateLoanStatusofCustomerApplication/{id}")
 	public ResponseEntity<CustomerLoanApplication> updateLoanStatusofCustomerApplication(
 			@RequestBody CustomerLoanApplication customerLoanApplication, @PathVariable int id) {
@@ -93,7 +93,7 @@ public class CustomerLoanApplicationController {
 		LOGGER.debug("Customerloanapplication Form updated successfully: {}", application);
 		return new ResponseEntity<CustomerLoanApplication>(application, HttpStatus.ACCEPTED);
 	}
-	
+
 	@GetMapping("/api/getAllSanctionedData")
 	public ResponseEntity<List<CustomerLoanApplication>> getALlSanctioedData()
 	{
@@ -101,18 +101,26 @@ public class CustomerLoanApplicationController {
 		List<CustomerLoanApplication> list = customerLoanApplicationService.getAllSanctioedData();
 		LOGGER.debug("Fetched {} Customerloanapplication Form successfully whose loanStatus is Santioned", list.size());
 		return new  ResponseEntity<List<CustomerLoanApplication>>(list,HttpStatus.OK);
+
 	}
 
 	@PutMapping("/api/Loandisbursement/{customerLoanId}")
 	public ResponseEntity<CustomerLoanApplication> updateLoandisBursement(
 			@RequestBody CustomerLoanApplication customerLoanApplication, @PathVariable int customerLoanId) {
+
 		System.out.println(customerLoanId+" --->"+customerLoanApplication.getLoandisbursement());
 		LOGGER.info("Received PUT request for CustomerLoanApplication  with customerLoanID: {}", customerLoanId);
+
+		System.out.println(customerLoanId + " --->" + customerLoanApplication.getLoandisbursement());
+		LOGGER.info("Received PUT request for CustomerController  with customerLoanID: {}", customerLoanId);
 		CustomerLoanApplication application = customerLoanApplicationService.updateLoandisBursement(customerLoanId,
 				customerLoanApplication);
 		LOGGER.debug("Customerloanapplication Form updated successfully: {}", application);
 		return new ResponseEntity<CustomerLoanApplication>(application, HttpStatus.ACCEPTED);
 	}
+
+
+
 	@GetMapping("/api/getcustomerloanapplication/{customerLoanID}")
 	public ResponseEntity<CustomerLoanApplication> getCustomerLoanApplication(@PathVariable int customerLoanID){
 		LOGGER.info("Received GET request for Customerloanapplication Form with customerLoanID: {}", customerLoanID);

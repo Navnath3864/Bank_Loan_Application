@@ -2,8 +2,8 @@ package com.app.model;
 
 import java.util.List;
 
-import com.app.model.CibilScoreData;
 
+import com.app.model.CibilScoreData;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +20,7 @@ import lombok.Data;
 public class CustomerLoanApplication {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int customerLoanID;
 
 	private String customerName;
@@ -65,13 +65,17 @@ public class CustomerLoanApplication {
 	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement loandisbursement;
 
-	@OneToMany(cascade = CascadeType.ALL)
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private LoanDisbursement loanDisbursement;
+
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Ledger> ledger;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private SanctionLetter sanctionLetter;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerVerification customerVerification;
 
 }
